@@ -1319,7 +1319,7 @@
           <systemPropertyVariables>
             <java.awt.headless>true</java.awt.headless>
           </systemPropertyVariables>
-          <forkCount>1</forkCount>
+          <forkCount>1C</forkCount>
           <reuseForks>false</reuseForks>
         </configuration>
       </plugin>
