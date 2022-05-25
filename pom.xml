@@ -240,7 +240,7 @@
     <logbackVersion>1.2.11</logbackVersion>
     <jackson1Version>1.9.13</jackson1Version>
     <jackson2Version>2.13.2</jackson2Version>
-    <spring-boot.version>2.5.7</spring-boot.version>
+    <spring-boot.version>2.7.0</spring-boot.version>
     <springVersion>5.3.17</springVersion>
     <kubernetes-client.version>5.12.1</kubernetes-client.version>
     <flumeVersion>1.9.0</flumeVersion>
@@ -1319,7 +1319,7 @@
           <systemPropertyVariables>
             <java.awt.headless>true</java.awt.headless>
           </systemPropertyVariables>
-          <forkCount>1C</forkCount>
+          <forkCount>1</forkCount>
           <reuseForks>false</reuseForks>
         </configuration>
       </plugin>
