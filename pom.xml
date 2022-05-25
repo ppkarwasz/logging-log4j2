@@ -1003,7 +1003,7 @@
         <artifactId>wiremock</artifactId>
         <scope>test</scope>
         <!--  2.27.2 causes WatchHttpTest to fail. -->
-        <version>2.26.3</version>
+        <version>2.27.2</version>
       </dependency>
       <!-- Used for compressing to formats other than zip and gz -->
       <dependency>
@@ -1319,7 +1319,7 @@
           <systemPropertyVariables>
             <java.awt.headless>true</java.awt.headless>
           </systemPropertyVariables>
-          <forkCount>1C</forkCount>
+          <forkCount>1</forkCount>
           <reuseForks>false</reuseForks>
         </configuration>
       </plugin>
