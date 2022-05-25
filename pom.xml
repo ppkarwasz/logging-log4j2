@@ -1079,7 +1079,7 @@
         <plugin>
           <groupId>org.apache.felix</groupId>
           <artifactId>maven-bundle-plugin</artifactId>
-          <version>3.5.0</version>
+          <version>5.1.6</version>
           <inherited>true</inherited>
           <extensions>true</extensions>
           <executions>
@@ -1319,7 +1319,7 @@
           <systemPropertyVariables>
             <java.awt.headless>true</java.awt.headless>
           </systemPropertyVariables>
-          <forkCount>1C</forkCount>
+          <forkCount>1</forkCount>
           <reuseForks>false</reuseForks>
         </configuration>
       </plugin>
