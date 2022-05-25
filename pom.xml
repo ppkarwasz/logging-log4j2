@@ -855,7 +855,7 @@
       <dependency>
         <groupId>org.codehaus.plexus</groupId>
         <artifactId>plexus-utils</artifactId>
-        <version>3.4.1</version>
+        <version>3.4.2</version>
         <scope>test</scope>
       </dependency>
       <dependency>
@@ -1319,7 +1319,7 @@
           <systemPropertyVariables>
             <java.awt.headless>true</java.awt.headless>
           </systemPropertyVariables>
-          <forkCount>1C</forkCount>
+          <forkCount>1</forkCount>
           <reuseForks>false</reuseForks>
         </configuration>
       </plugin>
