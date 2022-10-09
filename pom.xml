@@ -349,7 +349,7 @@
     <maven.version>3.8.5</maven.version>
     <mockito.version>4.2.0</mockito.version>
     <mongodb.version>4.0.3</mongodb.version>
-    <nashorn.version>15.3</nashorn.version>
+    <nashorn.version>15.4</nashorn.version>
     <netty.version>4.1.80.Final</netty.version>
     <opentest4j.version>1.2.0</opentest4j.version>
     <org.eclipse.osgi.version>3.16.200</org.eclipse.osgi.version>
