@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up JDK 11
-        uses: actions/setup-java@v2.4.0
+        uses: actions/setup-java@a18c333f3f14249953dab3e186e5e21bf3390f1d
         with:
           distribution: temurin
           java-version: 11
@@ -83,7 +83,7 @@ jobs:
 
       - name: Set up JDK ${{ matrix.jdk }}
         if: matrix.jdk != 11
-        uses: actions/setup-java@v2.4.0
+        uses: actions/setup-java@a18c333f3f14249953dab3e186e5e21bf3390f1d
         with:
           distribution: temurin
           java-version: ${{ matrix.jdk }}
