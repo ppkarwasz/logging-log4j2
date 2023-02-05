@@ -18,7 +18,7 @@ name: build
 on:
   push:
     branches:
-      - release-2.x
+      - 2.x
   pull_request:
 
 permissions:
