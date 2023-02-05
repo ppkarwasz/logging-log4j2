@@ -19,10 +19,45 @@ updates:
 - package-ecosystem: maven
   directory: "/"
   schedule:
-    interval: monthly
-  open-pull-requests-limit: 50
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+    # Stick to Cassandra 3.x
+    - dependency-name: "org.apache.cassandra:*"
+      update-types: ["version-update:semver-major"]
+    - dependency-name: "com.datastax.cassandra:*"
+      update-types: ["version-update:semver-major"]
+    # Newer versions require Java 9
+    - dependency-name: "com.conversantmedia:disruptor"
+    # Stick to Jakarta EE 9.x
+    - dependency-name: "jakarta.platform:jakarta.jakartaee-bom"
+    # Jetty 9.x is the last with an internal logging API
+    - dependency-name: "org.eclipse.jetty:jetty-bom"
+      update-types: ["version-update:semver-major"]
+    # Stick to Java EE 8
+    - dependency-name: "javax.activation:javax.activation-api"
+      update-types: ["version-update:semver-major"]
+    - dependency-name: "javax.inject:javax.inject"
+      update-types: ["version-update:semver-major"]
+    - dependency-name: "javax.jms:javax.jms-api"
+      update-types: ["version-update:semver-major"]
+    - dependency-name: "javax.mail:javax.mail-api"
+      update-types: ["version-update:semver-major"]
+    - dependency-name: "javax.persistence:javax.persistence-api"
+      update-types: ["version-update:semver-major"]
+    - dependency-name: "javax.servlet.jsp:javax.servlet.jsp-api"
+      update-types: ["version-update:semver-major"]
+    - dependency-name: "javax.servlet:javax.servlet-api"
+      update-types: ["version-update:semver-major"]
+    # Stick to OSGI 6.0
+    - dependency-name: "org.osgi:org.osgi.core"
+      update-types: ["version-update:semver-major"]
+    # Stick to MongoDB 3.x/4.x according to the module
+    - dependency-name: "org.mongodb:*"
+      update-types: ["version-update:semver-major"]
+
 - package-ecosystem: github-actions
   directory: /
   schedule:
-    interval: monthly
-  open-pull-requests-limit: 5
+    interval: daily
+  open-pull-requests-limit: 10

@@ -21,7 +21,9 @@ on:
       - release-2.x
   pull_request:
 
-permissions: read-all
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
 
@@ -88,68 +90,23 @@ jobs:
             --non-recursive \
             site
 
-  deploy:
+  merge:
 
     runs-on: ubuntu-latest
-    env:
-      MAVEN_OPTS: -Xms3072m -Xmx3072m
     needs: build
-    if: github.repository == 'apache/logging-log4j2' && github.ref == 'refs/heads/release-2.x'
 
     steps:
 
-      - name: Checkout repository
-        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b   # 3.2.0
+      - name: "[dependabot] Fetch metadata"
+        id: metadata
+        if: github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
+        uses: dependabot/fetch-metadata@v1.3.6
         with:
-          fetch-depth: 32
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
 
-      # JDK 11 is needed for the build.
-      # Search `maven-toolchains-plugin` usages for details.
-      - name: Setup JDK 11
-        uses: actions/setup-java@1df8dbefe2a8cbc99770194893dd902763bee34b   # 3.9.0
-        with:
-          distribution: temurin
-          java-version: 11
-          java-package: jdk
-          architecture: x64
-          cache: maven
-
-      # JDK 8 is needed for the build, and it is the primary bytecode target.
-      # Hence, JDK 8 is set up after 11, so that JAVA_HOME used by Maven during build will point to 8.
-      - name: Setup JDK 8
-        uses: actions/setup-java@1df8dbefe2a8cbc99770194893dd902763bee34b   # 3.9.0
-        with:
-          distribution: temurin
-          java-version: 8
-          java-package: jdk
-          architecture: x64
-          cache: maven
-
-      - name: Inspect environment
-        run: env | grep '^JAVA'
-
-      - name: Inspect project version
-        run: |
-          echo ::set-output name=version::$(./mvnw \
-            -q -Dexec.executable=echo \
-            -Dexec.args='${project.version}' --non-recursive exec:exec)
-        id: get_version
-
-      - name: Maven "deploy"
-        # Do not deploy release versions
-        if: ${{ endsWith(steps.get_version.outputs.version, '-SNAPSHOT') }}
-        timeout-minutes: 15
-        shell: bash
-        # `package install:install deploy:deploy` goal is needed to deploy without configuring the plugin in the POM.
-        # For details see: https://maven.apache.org/plugins/maven-gpg-plugin/examples/deploy-signed-artifacts.html
-        run: |
-          ./mvnw \
-            --show-version --batch-mode --errors --no-transfer-progress \
-            -Dgpg.skip=true \
-            -DskipTests=true \
-            --settings .github/workflows/maven-settings.xml \
-            --global-toolchains ".github/workflows/maven-toolchains.xml" \
-            package install:install deploy:deploy
+      - name: "[dependabot] Auto-merge the PR"
+        if: github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
+        run: gh pr merge --auto --squash "$PR_URL"
         env:
-          NEXUS_USER: ${{ secrets.NEXUS_USER }}
-          NEXUS_PW: ${{ secrets.NEXUS_PW }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
