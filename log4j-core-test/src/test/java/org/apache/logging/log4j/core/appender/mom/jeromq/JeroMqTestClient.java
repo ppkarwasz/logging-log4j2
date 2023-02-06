@@ -14,42 +14,49 @@
  * See the license for the specific language governing permissions and
  * limitations under the license.
  */
-
 package org.apache.logging.log4j.core.appender.mom.jeromq;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 
 import org.apache.logging.log4j.util.Constants;
+import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 
-class JeroMqTestClient implements Callable<List<String>> {
+import static org.assertj.core.api.Assertions.assertThat;
+
+class JeroMqTestClient {
 
     private final ZMQ.Context context;
 
     private final String endpoint;
-    private final List<String> messages;
     private final int receiveCount;
+    private ZMQ.Socket subscriber;
 
     JeroMqTestClient(final ZMQ.Context context, final String endpoint, final int receiveCount) {
         this.context = context;
         this.endpoint = endpoint;
         this.receiveCount = receiveCount;
-        this.messages = new ArrayList<>(receiveCount);
     }
 
-    @Override
-    public List<String> call() throws Exception {
-        try (ZMQ.Socket subscriber = context.socket(ZMQ.SUB)) {
-            subscriber.connect(endpoint);
-            subscriber.subscribe(Constants.EMPTY_BYTE_ARRAY);
-            for (int messageNum = 0; messageNum < receiveCount
-                    && !Thread.currentThread().isInterrupted(); messageNum++) {
-                // Use trim to remove the tailing '0' character
-                messages.add(subscriber.recvStr(0).trim());
-            }
+    public void connect() {
+        subscriber = context.socket(SocketType.SUB);
+        assertThat(subscriber.connect(endpoint)).describedAs("Connected to %s", endpoint).isTrue();
+        assertThat(subscriber.subscribe(Constants.EMPTY_BYTE_ARRAY)).isTrue();
+    }
+
+    public List<String> getMessages() {
+        final List<String> messages = new ArrayList<>(receiveCount);
+        for (int messageNum = 0; messageNum < receiveCount && !Thread.currentThread().isInterrupted(); messageNum++) {
+            // Use trim to remove the tailing '0' character
+            messages.add(subscriber.recvStr(0).trim());
         }
         return messages;
+    }
+
+    public void close() {
+        if (subscriber != null) {
+            subscriber.close();
+        }
     }
 }

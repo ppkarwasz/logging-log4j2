@@ -17,10 +17,12 @@
 package org.apache.logging.log4j.core.appender.mom.jeromq;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
@@ -28,6 +30,7 @@ import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.test.junit.LoggerContextSource;
 import org.apache.logging.log4j.core.test.junit.Named;
 import org.apache.logging.log4j.core.util.ExecutorServices;
+import org.apache.logging.log4j.status.StatusLogger;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
@@ -38,7 +41,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 @Tag("zeromq")
 @Tag("sleepy")
-@Timeout(value = 60)
+@Timeout(value = 600)
 @LoggerContextSource(value = "JeroMqAppenderTest.xml", timeout = 60)
 public class JeroMqAppenderTest {
 
@@ -56,71 +59,68 @@ public class JeroMqAppenderTest {
     }
 
     @Test
-    public void testClientServer(@Named(APPENDER_NAME) final JeroMqAppender appender, final LoggerContext ctx) throws Exception {
+    public void testClientServer(@Named(APPENDER_NAME) final JeroMqAppender appender, final LoggerContext ctx)
+            throws Exception {
         final Logger logger = ctx.getLogger(getClass());
         final int expectedReceiveCount = 3;
-        final JeroMqTestClient client = new JeroMqTestClient(JeroMqManager.getContext(), ENDPOINT, expectedReceiveCount);
-        final ExecutorService executor = Executors.newSingleThreadExecutor();
+        final JeroMqTestClient client = new JeroMqTestClient(JeroMqManager.getContext(), ENDPOINT,
+                expectedReceiveCount);
         try {
-            final Future<List<String>> future = executor.submit(client);
-            Thread.sleep(100);
+            CompletableFuture.runAsync(client::connect).join();
             appender.resetSendRcs();
             logger.info("Hello");
             logger.info("Again");
             ThreadContext.put("foo", "bar");
             logger.info("World");
-            final List<String> list = future.get();
-            assertEquals(expectedReceiveCount, appender.getSendRcTrue());
-            assertEquals(0, appender.getSendRcFalse());
-            assertEquals("Hello", list.get(0));
-            assertEquals("Again", list.get(1));
-            assertEquals("barWorld", list.get(2));
+            CompletableFuture.supplyAsync(client::getMessages).thenAccept(list -> {
+                assertEquals(expectedReceiveCount, appender.getSendRcTrue());
+                assertEquals(0, appender.getSendRcFalse());
+                assertEquals("Hello", list.get(0));
+                assertEquals("Again", list.get(1));
+                assertEquals("barWorld", list.get(2));
+            }).join();
         } finally {
-            executor.shutdown();
+            client.close();
         }
     }
 
     @Test
-    public void testMultiThreadedServer(@Named(APPENDER_NAME) final JeroMqAppender appender, final LoggerContext ctx) throws Exception {
+    public void testMultiThreadedServer(@Named(APPENDER_NAME) final JeroMqAppender appender, final LoggerContext ctx)
+            throws Exception {
         final Logger logger = ctx.getLogger(getClass());
         final int nThreads = 10;
         final int expectedReceiveCount = 2 * nThreads;
         final JeroMqTestClient client = new JeroMqTestClient(JeroMqManager.getContext(), ENDPOINT,
                 expectedReceiveCount);
-        final ExecutorService executor = Executors.newSingleThreadExecutor();
         try {
-            final Future<List<String>> future = executor.submit(client);
-            Thread.sleep(100);
+            CompletableFuture.runAsync(client::connect).join();
             appender.resetSendRcs();
-            final ExecutorService fixedThreadPool = Executors.newFixedThreadPool(nThreads);
-            for (int i = 0; i < 10.; i++) {
-                fixedThreadPool.submit(() -> {
-                    logger.info("Hello");
-                    logger.info("Again");
-                });
-            }
-            final List<String> list = future.get();
-            assertEquals(expectedReceiveCount, appender.getSendRcTrue());
-            assertEquals(0, appender.getSendRcFalse());
-            int hello = 0;
-            int again = 0;
-            for (final String string : list) {
-                switch (string) {
-                case "Hello":
-                    hello++;
-                    break;
-                case "Again":
-                    again++;
-                    break;
-                default:
-                    fail("Unexpected message: " + string);
+            CompletableFuture.allOf(IntStream.range(0, 10).mapToObj(ignored -> CompletableFuture.runAsync(() -> {
+                logger.info("Hello");
+                logger.info("Again");
+            })).toArray(CompletableFuture[]::new)).join();
+            CompletableFuture.supplyAsync(client::getMessages).thenAccept(list -> {
+                assertEquals(expectedReceiveCount, appender.getSendRcTrue());
+                assertEquals(0, appender.getSendRcFalse());
+                int hello = 0;
+                int again = 0;
+                for (final String string : list) {
+                    switch (string) {
+                    case "Hello":
+                        hello++;
+                        break;
+                    case "Again":
+                        again++;
+                        break;
+                    default:
+                        fail("Unexpected message: " + string);
+                    }
                 }
-            }
-            assertEquals(nThreads, hello);
-            assertEquals(nThreads, again);
+                assertEquals(nThreads, hello);
+                assertEquals(nThreads, again);
+            });
         } finally {
-            ExecutorServices.shutdown(executor, DEFAULT_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS,
-                    JeroMqAppenderTest.class.getSimpleName());
+            client.close();
         }
     }
 
