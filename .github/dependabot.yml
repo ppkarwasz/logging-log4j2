@@ -55,6 +55,19 @@ updates:
     # Stick to MongoDB 3.x/4.x according to the module
     - dependency-name: "org.mongodb:*"
       update-types: ["version-update:semver-major"]
+    # Spring Boot 3.x has the Spring lookup already integrated
+    - dependency-name: "org.springframework:spring-framework-bom"
+      update-types: ["version-update:semver-major"]
+    - dependency-name: "org.springframework.boot:*"
+      update-types: ["version-update:semver-major"]
+    # No automatic upgrades at all for `slf4j-api` 1.7.25
+    - dependency-name: "org.slf4j:*"
+    # Only patch-level upgrades for Logback
+    - dependency-name: "ch.qos.logback:*"
+      update-types: ["version-update:semver-major", "version-update:semver-minor"]
+    # Keep EclipseLink at version 2.X (Java EE 8)
+    - dependency-name: "org.eclipse.persistence:*"
+      update-types: ["version-update:semver-major"]
 
 - package-ecosystem: github-actions
   directory: /
