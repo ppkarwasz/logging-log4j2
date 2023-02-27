@@ -304,11 +304,14 @@
          Common properties
          ================= -->
     <manifestfile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestfile>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.release>8</maven.compiler.release>
+    <maven.compiler.target>${maven.compiler.release}</maven.compiler.target>
+    <!-- JDK version of the main Maven process (used in ASF parent POM) -->
+    <minimalJavaBuildVersion>[17, 18)</minimalJavaBuildVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- Fixed `project.build.outputTimestamp` is required for reproducible builds: https://maven.apache.org/guides/mini/guide-reproducible-builds.html -->
     <project.build.outputTimestamp>1676697577</project.build.outputTimestamp>
+    <surefire.jdkToolchain>[1.8, 9)</surefire.jdkToolchain>
     <docLabel>Site Documentation</docLabel>
     <projectDir/>
     <module.name/>
@@ -1366,8 +1369,7 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <configuration>
-            <source>${maven.compiler.source}</source>
-            <target>${maven.compiler.target}</target>
+            <release>${maven.compiler.release}</release>
             <parameters>true</parameters>
             <showDeprecation>true</showDeprecation>
             <showWarnings>true</showWarnings>
@@ -1597,6 +1599,7 @@
             <importOrder>
               <order>java,org,com,\#</order>
             </importOrder>
+            <removeUnusedImports/>
           </java>
           <pom>
             <sortPom>
@@ -1632,17 +1635,20 @@
         </configuration>
       </plugin>
 
+      <!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
+          <encoding>UTF-8</encoding>
+          <forkCount>1</forkCount>
+          <jdkToolchain>
+            <version>${surefire.jdkToolchain}</version>
+          </jdkToolchain>
+          <reuseForks>false</reuseForks>
           <systemPropertyVariables>
             <java.awt.headless>true</java.awt.headless>
           </systemPropertyVariables>
-          <argLine>-Xms256m -Xmx1024m</argLine>
-          <forkCount>1</forkCount>
-          <reuseForks>false</reuseForks>
-          <encoding>UTF-8</encoding>
         </configuration>
         <executions>
           <execution>
@@ -1653,16 +1659,20 @@
           </execution>
         </executions>
       </plugin>
+      -->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
+          <forkCount>1</forkCount>
+          <jdkToolchain>
+            <version>${surefire.jdkToolchain}</version>
+          </jdkToolchain>
+          <reuseForks>false</reuseForks>
           <systemPropertyVariables>
             <java.awt.headless>true</java.awt.headless>
           </systemPropertyVariables>
-          <forkCount>1</forkCount>
-          <reuseForks>false</reuseForks>
         </configuration>
       </plugin>
 
@@ -1925,6 +1935,14 @@
       </activation>
       <properties>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>rebuild</id>
+      <properties>
+        <maven.test.skip>true</maven.test.skip>
+        <surefire.jdkToolchain>[17, 18)</surefire.jdkToolchain>
       </properties>
     </profile>
 

@@ -65,20 +65,28 @@
           </instructions>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <jdkToolchain>
+            <version>${surefire.jdkToolchain}</version>
+          </jdkToolchain>
+          <release combine.self="override"/>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
   <profiles>
     <profile>
       <id>default-jmx-profile</id>
       <activation>
-        <activeByDefault>true</activeByDefault>
         <file>
           <exists>${java.home}/../lib/jconsole.jar</exists>
         </file>
       </activation>
-      <properties>
-        <toolsjar>${java.home}/../lib/jconsole.jar</toolsjar>
-      </properties>
       <dependencies>
         <dependency>
           <groupId>com.sun</groupId>
@@ -92,7 +100,6 @@
     <profile>
       <id>mac-profile</id>
       <activation>
-        <activeByDefault>false</activeByDefault>
         <file>
           <exists>${java.home}/../Classes/jconsole.jar</exists>
         </file>
@@ -110,7 +117,6 @@
     <profile>
       <id>jenkins-profile</id>
       <activation>
-        <activeByDefault>false</activeByDefault>
         <property>
           <name>jenkins</name>
         </property>

@@ -25,8 +25,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.ParentRunner;
 
-import sun.reflect.Reflection;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
@@ -40,7 +38,9 @@ public class StackLocatorUtilTest {
     @Test
     public void testStackTraceEquivalence() throws Exception {
         for (int i = 1; i < 15; i++) {
-            final Class<?> expected = Reflection.getCallerClass(i + StackLocator.JDK_7U25_OFFSET);
+            final Class<?> expected = (Class<?>) Class.forName("sun.reflect.Reflection")
+                    .getMethod("getCallerClass", int.class)
+                    .invoke(null, i + StackLocator.JDK_7U25_OFFSET);
             final Class<?> actual = StackLocatorUtil.getCallerClass(i);
             final Class<?> fallbackActual = Class.forName(
                 StackLocatorUtil.getStackTraceElement(i).getClassName());
