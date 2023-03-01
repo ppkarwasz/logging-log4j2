@@ -53,11 +53,12 @@ jobs:
 
       - name: "Cherry-pick to main"
         env:
-          PR_TITLE: ${{ github.event.pull_request.title }}
           PR_BODY: ${{ github.event.pull_request.body }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
         run: |
-          git fetch --depth=1 origin +${{ github.sha }}:refs/remotes/pull_request
-          git cherry-pick ${{ github.sha }} && gh pr create -B main -t "$PR_TITLE" -b "$PR_BODY"
+          git fetch --depth=1 origin "+$PR_SHA:refs/remotes/origin/pull_request"
+          git cherry-pick "$PR_SHA" && gh pr create -B main -t "$PR_TITLE" -b "$PR_BODY"
 
   merge:
 
