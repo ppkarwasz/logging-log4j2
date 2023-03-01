@@ -63,7 +63,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git cherry-pick origin/pull_request
-          git push origin "HEAD:refs/heads/cherry-pick/$PR_REF"
+          git push -f origin "HEAD:refs/heads/cherry-pick/$PR_REF"
           gh pr create -B main -t "$PR_TITLE" -b "$PR_BODY" -H "origin/cherry-pick/$PR_REF"
 
   merge:
