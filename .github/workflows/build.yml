@@ -56,6 +56,7 @@ jobs:
           PR_BODY: ${{ github.event.pull_request.body }}
           PR_REF: ${{ github.event.pull_request.head.ref }}
           PR_TITLE: ${{ github.event.pull_request.title }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           git fetch --depth=2 origin "+refs/heads/$PR_REF:refs/remotes/origin/pull_request"
           git config user.name github-actions
