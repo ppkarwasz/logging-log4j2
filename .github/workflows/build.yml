@@ -48,13 +48,15 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b   # 3.2.0
+        with:
+          ref: 'main'
 
       - name: "Cherry-pick to main"
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_BODY: ${{ github.event.pull_request.body }}
         run: |
-          git checkout main
+          git fetch --depth=1 origin +${{ github.sha }}:refs/remotes/pull_request
           git cherry-pick ${{ github.sha }} && gh pr create -B main -t "$PR_TITLE" -b "$PR_BODY"
 
   merge:
