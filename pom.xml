@@ -287,7 +287,7 @@
     <asciidoctor-maven-plugin.version>2.2.2</asciidoctor-maven-plugin.version>
     <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
     <!-- checkstyle 10.0 requires Java 11 -->
-    <checkstyle.version>9.3</checkstyle.version>
+    <checkstyle.version>10.8.0</checkstyle.version>
     <checksum-maven-plugin.version>1.11</checksum-maven-plugin.version>
     <docker-maven-plugin.version>0.40.2</docker-maven-plugin.version>
     <exam-maven-plugin.version>4.13.5</exam-maven-plugin.version>
