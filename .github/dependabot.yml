@@ -17,6 +17,7 @@
 version: 2
 updates:
 - package-ecosystem: maven
+  directory: "/"
   schedule:
     interval: "daily"
   target-branch: "2.x"
@@ -38,11 +39,13 @@ updates:
       update-types: ["version-update:semver-major"]
 
 - package-ecosystem: github-actions
+  directory: "/"
   schedule:
     interval: "daily"
   target-branch: "2.x"
 
 - package-ecosystem: maven
+  directory: "/"
   schedule:
     interval: "daily"
   target-branch: "main"
@@ -52,6 +55,7 @@ updates:
       update-types: ["version-update:semver-major"]
 
 - package-ecosystem: github-actions
+  directory: "/"
   schedule:
     interval: "daily"
   target-branch: "main"
