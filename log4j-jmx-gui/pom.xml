@@ -30,7 +30,6 @@
     <log4jParentDir>${basedir}/..</log4jParentDir>
     <docLabel>JMX GUI Documentation</docLabel>
     <projectDir>/jmx-gui</projectDir>
-    <jenkins.java.home>/home/jenkins/tools/java/latest1.7</jenkins.java.home>
     <module.name>org.apache.logging.log4j.jmx.gui</module.name>
   </properties>
   <dependencies>
@@ -55,6 +54,7 @@
   </dependencies>
   <build>
     <plugins>
+
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
@@ -68,13 +68,28 @@
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <jdkToolchain>
-            <version>${surefire.jdkToolchain}</version>
-          </jdkToolchain>
-          <release combine.self="override"/>
-        </configuration>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>enforce-jconsole-jar</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireFilesExist>
+                  <files>
+                    <file>${java.home}/../lib/jconsole.jar</file>
+                    <file>${java.home}/../Classes/jconsole.jar</file>
+                    <file>${env.JAVA_HOME_8_X64}/lib/jconsole.jar</file>
+                  </files>
+                  <message>Set the JAVA_HOME_8_X64 environment variable to the location of a JDK 8 installation.</message>
+                  <satisfyAny>true</satisfyAny>
+                </requireFilesExist>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
 
     </plugins>
@@ -115,18 +130,18 @@
       </dependencies>
     </profile>
     <profile>
-      <id>jenkins-profile</id>
+      <id>github-profile</id>
       <activation>
-        <property>
-          <name>jenkins</name>
-        </property>
+        <file>
+          <exists>${env.JAVA_HOME_8_X64}/lib/jconsole.jar</exists>
+        </file>
       </activation>
       <dependencies>
         <dependency>
           <groupId>com.sun</groupId>
           <artifactId>jconsole</artifactId>
           <scope>system</scope>
-          <systemPath>${jenkins.java.home}/lib/jconsole.jar</systemPath>
+          <systemPath>${env.JAVA_HOME_8_X64}/lib/jconsole.jar</systemPath>
           <optional>true</optional>
         </dependency>
       </dependencies>
