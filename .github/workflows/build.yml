@@ -47,7 +47,8 @@ jobs:
         with:
           fetch-depth: 32
 
-      # JDK 8 and 11 is needed for the build.
+      # JDK 17 is needed for the build.
+      # JDK 8 is used for the tests.
       # Search `maven-toolchains-plugin` usages for details.
       - name: Setup JDK
         uses: actions/setup-java@3f07048e3d294f56e9b90ac5ea2c6f74e9ad0f98   # 3.10.0
@@ -55,7 +56,7 @@ jobs:
           distribution: temurin
           java-version: |
             8
-            11
+            17
           architecture: x64
           cache: maven
 
@@ -66,8 +67,6 @@ jobs:
       - name: Build
         timeout-minutes: 60
         shell: bash
-        env:
-          JAVA_HOME: ${{ env.JAVA_HOME_8_X64 }}
         run: ./mvnw clean install
 
       - name: Upload Surefire Reports
@@ -83,8 +82,6 @@ jobs:
         id: report-reproducible
         timeout-minutes: 10
         shell: bash
-        env:
-          JAVA_HOME: ${{ env.JAVA_HOME_8_X64 }}
         run: |
           ./mvnw \
           -DskipTests=true \
@@ -103,8 +100,6 @@ jobs:
       - name: Build site
         timeout-minutes: 10
         shell: bash
-        env:
-          JAVA_HOME: ${{ env.JAVA_HOME_8_X64 }}
         run: ./mvnw site
 
   merge:
@@ -136,7 +131,8 @@ jobs:
         with:
           fetch-depth: 32
 
-      # JDK 8 and 11 are needed for the build.
+      # JDK 17 is needed for the build.
+      # JDK 8 is just needed for JConsole.
       # Search `maven-toolchains-plugin` usages for details.
       - name: Setup JDK
         uses: actions/setup-java@3f07048e3d294f56e9b90ac5ea2c6f74e9ad0f98   # 3.10.0
@@ -144,7 +140,7 @@ jobs:
           distribution: temurin
           java-version: |
             8
-            11
+            17
           architecture: x64
           cache: maven
 
@@ -171,6 +167,5 @@ jobs:
             -DskipTests=true \
             package install:install deploy:deploy
         env:
-          JAVA_HOME: ${{ env.JAVA_HOME_8_X64 }}
           NEXUS_USER: ${{ secrets.NEXUS_USER }}
           NEXUS_PW: ${{ secrets.NEXUS_PW }}
