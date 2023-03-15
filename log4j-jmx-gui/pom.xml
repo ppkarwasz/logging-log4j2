@@ -81,9 +81,9 @@
                   <files>
                     <file>${java.home}/../lib/jconsole.jar</file>
                     <file>${java.home}/../Classes/jconsole.jar</file>
-                    <file>${env.JAVA_HOME_8_X64}/lib/jconsole.jar</file>
+                    <file>${env.JAVA_HOME_8}/lib/jconsole.jar</file>
                   </files>
-                  <message>Set the JAVA_HOME_8_X64 environment variable to the location of a JDK 8 installation.</message>
+                  <message>Set the JAVA_HOME_8 environment variable to the location of a JDK 8 installation.</message>
                   <satisfyAny>true</satisfyAny>
                 </requireFilesExist>
               </rules>
@@ -133,7 +133,7 @@
       <id>github-profile</id>
       <activation>
         <file>
-          <exists>${env.JAVA_HOME_8_X64}/lib/jconsole.jar</exists>
+          <exists>${env.JAVA_HOME_8}/lib/jconsole.jar</exists>
         </file>
       </activation>
       <dependencies>
@@ -141,7 +141,7 @@
           <groupId>com.sun</groupId>
           <artifactId>jconsole</artifactId>
           <scope>system</scope>
-          <systemPath>${env.JAVA_HOME_8_X64}/lib/jconsole.jar</systemPath>
+          <systemPath>${env.JAVA_HOME_8}/lib/jconsole.jar</systemPath>
           <optional>true</optional>
         </dependency>
       </dependencies>

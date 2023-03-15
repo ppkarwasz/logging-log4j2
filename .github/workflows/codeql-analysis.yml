@@ -72,6 +72,12 @@ jobs:
             17
           cache: maven
 
+      - name: Find real JDK 8 path
+        run: |
+          JAVA_HOME_8=$(realpath $JAVA_HOME_8_X64)
+          echo $JAVA_HOME_8
+          echo "JAVA_HOME_8=$JAVA_HOME_8" >> $GITHUB_ENV
+
       - name: Build with Maven
         timeout-minutes: 60
         shell: bash

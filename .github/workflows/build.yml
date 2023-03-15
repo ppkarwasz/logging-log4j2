@@ -60,6 +60,12 @@ jobs:
           architecture: x64
           cache: maven
 
+      - name: Find real JDK 8 path
+        run: |
+          JAVA_HOME_8=$(realpath $JAVA_HOME_8_X64)
+          echo $JAVA_HOME_8
+          echo "JAVA_HOME_8=$JAVA_HOME_8" >> $GITHUB_ENV
+
       # We could have used `verify`, but `clean install` is required for the following:
       # 1. The build reproducibility report
       #    For details, see: https://maven.apache.org/guides/mini/guide-reproducible-builds.html#how-to-test-my-maven-build-reproducibility
