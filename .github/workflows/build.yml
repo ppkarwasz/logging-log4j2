@@ -60,9 +60,13 @@ jobs:
           architecture: x64
           cache: maven
 
+      # Maven Enforcer Plugin 3.2.0 has problems following symbolic links
       - name: Find real JDK 8 path
         run: |
-          JAVA_HOME_8=$(realpath $JAVA_HOME_8_X64)
+          if which realpath >/dev/null; then
+            JAVA_HOME_8="$(realpath $JAVA_HOME_8_X64)"
+          else
+            JAVA_HOME_8="$JAVA_HOME_8_X64"
           echo $JAVA_HOME_8
           echo "JAVA_HOME_8=$JAVA_HOME_8" >> $GITHUB_ENV
 
