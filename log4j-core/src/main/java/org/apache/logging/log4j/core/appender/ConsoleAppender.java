@@ -16,14 +16,11 @@
  */
 package org.apache.logging.log4j.core.appender;
 
-import java.io.FileDescriptor;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Constructor;
 import java.nio.charset.Charset;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -31,6 +28,7 @@ import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.Core;
 import org.apache.logging.log4j.core.Filter;
 import org.apache.logging.log4j.core.Layout;
+import org.apache.logging.log4j.core.appender.internal.AnsiSupport;
 import org.apache.logging.log4j.core.config.Property;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.config.plugins.PluginBuilderAttribute;
@@ -39,9 +37,6 @@ import org.apache.logging.log4j.core.config.plugins.validation.constraints.Requi
 import org.apache.logging.log4j.core.layout.PatternLayout;
 import org.apache.logging.log4j.core.util.Booleans;
 import org.apache.logging.log4j.core.util.CloseShieldOutputStream;
-import org.apache.logging.log4j.core.util.Loader;
-import org.apache.logging.log4j.core.util.Throwables;
-import org.apache.logging.log4j.util.Chars;
 import org.apache.logging.log4j.util.PropertiesUtil;
 
 /**
@@ -256,36 +251,16 @@ public final class ConsoleAppender extends AbstractOutputStreamAppender<OutputSt
         try {
             // @formatter:off
             outputStream = target == Target.SYSTEM_OUT ?
-                direct ? new FileOutputStream(FileDescriptor.out) :
+                direct ? AnsiSupport.INSTANCE.directStream(target) :
                     (follow ? new PrintStream(new SystemOutStream(), true, enc) : System.out) :
-                direct ? new FileOutputStream(FileDescriptor.err) :
+                direct ? AnsiSupport.INSTANCE.directStream(target) :
                     (follow ? new PrintStream(new SystemErrStream(), true, enc) : System.err);
             // @formatter:on
             outputStream = new CloseShieldOutputStream(outputStream);
         } catch (final UnsupportedEncodingException ex) { // should never happen
             throw new IllegalStateException("Unsupported default encoding " + enc, ex);
         }
-        final PropertiesUtil propsUtil = PropertiesUtil.getProperties();
-        if (!propsUtil.isOsWindows() || propsUtil.getBooleanProperty("log4j.skipJansi", true) || direct) {
-            return outputStream;
-        }
-        try {
-            // We type the parameter as a wildcard to avoid a hard reference to Jansi.
-            final Class<?> clazz = Loader.loadClass(JANSI_CLASS);
-            final Constructor<?> constructor = clazz.getConstructor(OutputStream.class);
-            return new CloseShieldOutputStream((OutputStream) constructor.newInstance(outputStream));
-        } catch (final ClassNotFoundException cnfe) {
-            LOGGER.debug("Jansi is not installed, cannot find {}", JANSI_CLASS);
-        } catch (final NoSuchMethodException nsme) {
-            LOGGER.warn("{} is missing the proper constructor", JANSI_CLASS);
-        } catch (final Exception ex) {
-            LOGGER.warn("Unable to instantiate {} due to {}", JANSI_CLASS, clean(Throwables.getRootCause(ex).toString()).trim());
-        }
-        return outputStream;
-    }
-
-    private static String clean(final String string) {
-        return string.replace(Chars.NUL, Chars.SPACE);
+        return direct ? outputStream : AnsiSupport.INSTANCE.wrapStream(outputStream, target);
     }
 
     /**

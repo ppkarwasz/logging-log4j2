@@ -24,6 +24,7 @@ import java.util.Map;
 
 import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LogEvent;
+import org.apache.logging.log4j.core.appender.internal.AnsiSupport;
 import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.config.Node;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
@@ -39,7 +40,6 @@ import org.apache.logging.log4j.core.pattern.LogEventPatternConverter;
 import org.apache.logging.log4j.core.pattern.PatternFormatter;
 import org.apache.logging.log4j.core.pattern.PatternParser;
 import org.apache.logging.log4j.core.pattern.RegexReplacement;
-import org.apache.logging.log4j.util.PropertiesUtil;
 import org.apache.logging.log4j.util.Strings;
 
 /**
@@ -660,10 +660,7 @@ public final class PatternLayout extends AbstractStringLayout {
         }
 
         private boolean useAnsiEscapeCodes() {
-            final PropertiesUtil propertiesUtil = PropertiesUtil.getProperties();
-            final boolean isPlatformSupportsAnsi = !propertiesUtil.isOsWindows();
-            final boolean isJansiRequested = !propertiesUtil.getBooleanProperty("log4j.skipJansi", true);
-            return isPlatformSupportsAnsi || isJansiRequested;
+            return AnsiSupport.isAnsiEnabled();
         }
 
         /**
