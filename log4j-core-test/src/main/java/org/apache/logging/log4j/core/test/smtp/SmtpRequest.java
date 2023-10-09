@@ -16,9 +16,9 @@
  */
 package org.apache.logging.log4j.core.test.smtp;
 
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
-import static org.apache.logging.log4j.util.Strings.toRootUpperCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootUpperCase;
 
 /**
  * Contains an SMTP client request. Handles state transitions using the following state transition table.

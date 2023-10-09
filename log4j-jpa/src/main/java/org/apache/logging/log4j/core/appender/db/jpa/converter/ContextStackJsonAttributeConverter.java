@@ -26,7 +26,7 @@ import javax.persistence.PersistenceException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.apache.logging.log4j.ThreadContext;
 import org.apache.logging.log4j.spi.DefaultThreadContextStack;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * A JPA 2.1 attribute converter for

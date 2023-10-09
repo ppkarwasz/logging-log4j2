@@ -23,7 +23,7 @@ import java.util.Map;
 
 import org.apache.logging.log4j.core.pattern.JAnsiTextRenderer;
 import org.apache.logging.log4j.core.pattern.TextRenderer;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 import org.fusesource.jansi.AnsiRenderer.Code;
 import org.junit.jupiter.api.Test;
 

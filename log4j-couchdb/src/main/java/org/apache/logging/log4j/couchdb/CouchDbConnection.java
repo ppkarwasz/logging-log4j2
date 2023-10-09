@@ -23,7 +23,7 @@ import org.apache.logging.log4j.core.appender.nosql.AbstractNoSqlConnection;
 import org.apache.logging.log4j.core.appender.nosql.DefaultNoSqlObject;
 import org.apache.logging.log4j.core.appender.nosql.NoSqlConnection;
 import org.apache.logging.log4j.core.appender.nosql.NoSqlObject;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 import org.lightcouch.CouchDbClient;
 import org.lightcouch.Response;
 

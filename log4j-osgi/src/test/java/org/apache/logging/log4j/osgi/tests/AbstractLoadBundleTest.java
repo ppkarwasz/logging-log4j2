@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.apache.logging.log4j.osgi.tests.junit.OsgiRule;
-import org.apache.logging.log4j.util.ServiceLoaderUtil;
+import org.apache.logging.log4j.util.internal.ServiceLoaderUtil;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;

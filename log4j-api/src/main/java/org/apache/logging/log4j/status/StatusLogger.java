@@ -37,8 +37,8 @@ import org.apache.logging.log4j.message.ParameterizedNoReferenceMessageFactory;
 import org.apache.logging.log4j.simple.SimpleLogger;
 import org.apache.logging.log4j.simple.SimpleLoggerContext;
 import org.apache.logging.log4j.spi.AbstractLogger;
-import org.apache.logging.log4j.util.Constants;
-import org.apache.logging.log4j.util.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.Constants;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 /**
  * Records events that occur in the logging system. By default, only error messages are logged to {@link System#err}.

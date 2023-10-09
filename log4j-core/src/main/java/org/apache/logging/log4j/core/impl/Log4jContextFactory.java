@@ -39,7 +39,7 @@ import org.apache.logging.log4j.core.util.Loader;
 import org.apache.logging.log4j.core.util.ShutdownCallbackRegistry;
 import org.apache.logging.log4j.spi.LoggerContextFactory;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 /**
  * Factory to locate a ContextSelector and then load a LoggerContext.

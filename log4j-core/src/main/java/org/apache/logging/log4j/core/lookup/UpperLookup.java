@@ -19,7 +19,7 @@ package org.apache.logging.log4j.core.lookup;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 
-import static org.apache.logging.log4j.util.Strings.toRootUpperCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootUpperCase;
 
 /**
  * Converts values to upper case. The passed in "key" should be the value of another lookup.

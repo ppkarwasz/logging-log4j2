@@ -26,7 +26,7 @@ import org.apache.logging.log4j.spi.AbstractLogger;
 import org.apache.logging.log4j.spi.ExtendedLogger;
 import org.apache.logging.log4j.spi.LoggerContext;
 import org.apache.logging.log4j.spi.LoggerRegistry;
-import org.apache.logging.log4j.util.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 /**
  * A simple {@link LoggerContext} implementation.

@@ -17,8 +17,8 @@
 package org.apache.logging.log4j.core.appender.db.jpa.converter;
 
 import org.apache.logging.log4j.core.test.categories.Appenders;
-import org.apache.logging.log4j.util.SortedArrayStringMap;
 import org.apache.logging.log4j.util.StringMap;
+import org.apache.logging.log4j.util.internal.SortedArrayStringMap;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;

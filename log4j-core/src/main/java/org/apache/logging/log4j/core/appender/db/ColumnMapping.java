@@ -35,7 +35,7 @@ import org.apache.logging.log4j.spi.ThreadContextStack;
 import org.apache.logging.log4j.status.StatusLogger;
 import org.apache.logging.log4j.util.ReadOnlyStringMap;
 
-import static org.apache.logging.log4j.util.Strings.toRootUpperCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootUpperCase;
 
 /**
  * A configuration element for specifying a database column name mapping.

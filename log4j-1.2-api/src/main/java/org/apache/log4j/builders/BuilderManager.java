@@ -44,7 +44,7 @@ import org.apache.logging.log4j.status.StatusLogger;
 import org.apache.logging.log4j.util.LoaderUtil;
 import org.w3c.dom.Element;
 
-import static org.apache.logging.log4j.util.Strings.toRootLowerCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootLowerCase;
 
 /**
  *

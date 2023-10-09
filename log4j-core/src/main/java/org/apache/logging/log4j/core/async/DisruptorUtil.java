@@ -26,7 +26,7 @@ import org.apache.logging.log4j.core.util.Constants;
 import org.apache.logging.log4j.core.util.Integers;
 import org.apache.logging.log4j.core.util.Loader;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 /**
  * Utility methods for getting Disruptor related configuration.

@@ -30,7 +30,7 @@ import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.util.Loader;
 import org.apache.logging.log4j.core.util.Throwables;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * Converts a Log4j 2 LogEvent into the components needed by a Log4j 1.x LoggingEvent.

@@ -77,7 +77,7 @@ import org.apache.logging.log4j.core.util.Source;
 import org.apache.logging.log4j.core.util.WatchManager;
 import org.apache.logging.log4j.core.util.Watcher;
 import org.apache.logging.log4j.core.util.WatcherFactory;
-import org.apache.logging.log4j.util.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 /**
  * The base Configuration. Many configuration implementations will extend this class.

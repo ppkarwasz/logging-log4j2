@@ -38,9 +38,9 @@ import org.apache.logging.log4j.core.config.plugins.processor.PluginEntry;
 import org.apache.logging.log4j.core.config.plugins.processor.PluginProcessor;
 import org.apache.logging.log4j.core.util.Loader;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
-import static org.apache.logging.log4j.util.Strings.toRootLowerCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootLowerCase;
 
 /**
  * Registry singleton for PluginType maps partitioned by source type and then by category names.

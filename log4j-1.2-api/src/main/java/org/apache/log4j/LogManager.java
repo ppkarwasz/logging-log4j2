@@ -28,7 +28,7 @@ import org.apache.log4j.spi.NOPLoggerRepository;
 import org.apache.log4j.spi.RepositorySelector;
 import org.apache.log4j.spi.RootLogger;
 import org.apache.logging.log4j.spi.LoggerContext;
-import org.apache.logging.log4j.util.StackLocatorUtil;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
 
 /**
  * The main entry point to Log4j 1.

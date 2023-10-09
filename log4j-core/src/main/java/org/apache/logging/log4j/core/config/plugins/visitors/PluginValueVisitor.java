@@ -20,8 +20,8 @@ import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.config.Node;
 import org.apache.logging.log4j.core.config.plugins.PluginValue;
-import org.apache.logging.log4j.util.StringBuilders;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.StringBuilders;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * PluginVisitor implementation for {@link PluginValue}.

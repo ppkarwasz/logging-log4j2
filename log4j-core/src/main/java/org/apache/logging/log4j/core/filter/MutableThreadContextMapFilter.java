@@ -50,8 +50,8 @@ import org.apache.logging.log4j.core.util.internal.HttpInputStreamUtil;
 import org.apache.logging.log4j.core.util.internal.LastModifiedSource;
 import org.apache.logging.log4j.core.util.internal.Status;
 import org.apache.logging.log4j.message.Message;
-import org.apache.logging.log4j.util.PerformanceSensitive;
-import org.apache.logging.log4j.util.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 /**
  * Filter based on a value in the Thread Context Map (MDC).

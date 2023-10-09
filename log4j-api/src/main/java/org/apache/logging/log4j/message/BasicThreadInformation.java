@@ -16,10 +16,10 @@
  */
 package org.apache.logging.log4j.message;
 
-import org.apache.logging.log4j.util.StringBuilders;
+import org.apache.logging.log4j.util.internal.StringBuilders;
 
-import static org.apache.logging.log4j.util.Chars.LF;
-import static org.apache.logging.log4j.util.Chars.SPACE;
+import static org.apache.logging.log4j.util.internal.Chars.LF;
+import static org.apache.logging.log4j.util.internal.Chars.SPACE;
 
 /**
  * Generates information about the current Thread. Used internally by ThreadDumpMessage.

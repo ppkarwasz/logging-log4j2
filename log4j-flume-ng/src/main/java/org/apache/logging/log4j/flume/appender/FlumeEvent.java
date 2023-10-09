@@ -41,7 +41,7 @@ import org.apache.logging.log4j.message.StructuredDataId;
 import org.apache.logging.log4j.message.StructuredDataMessage;
 import org.apache.logging.log4j.util.Constants;
 import org.apache.logging.log4j.util.ReadOnlyStringMap;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * Class that is both a Flume and Log4j Event.

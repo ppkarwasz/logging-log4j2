@@ -41,7 +41,7 @@ import org.apache.logging.log4j.status.StatusLogger;
 import org.apache.logging.log4j.util.Constants;
 import org.apache.logging.log4j.util.LoaderUtil;
 
-import static org.apache.logging.log4j.util.Strings.toRootLowerCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootLowerCase;
 
 /**
  * Collection of basic TypeConverter implementations. May be used to register additional TypeConverters or find

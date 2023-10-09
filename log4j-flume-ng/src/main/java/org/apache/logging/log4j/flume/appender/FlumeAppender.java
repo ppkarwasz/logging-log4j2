@@ -34,9 +34,9 @@ import org.apache.logging.log4j.core.layout.Rfc5424Layout;
 import org.apache.logging.log4j.core.net.Facility;
 import org.apache.logging.log4j.core.util.Booleans;
 import org.apache.logging.log4j.core.util.Integers;
-import org.apache.logging.log4j.util.Timer;
+import org.apache.logging.log4j.util.internal.Timer;
 
-import static org.apache.logging.log4j.util.Strings.toRootUpperCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootUpperCase;
 
 /**
  * An Appender that uses the Avro protocol to route events to Flume.

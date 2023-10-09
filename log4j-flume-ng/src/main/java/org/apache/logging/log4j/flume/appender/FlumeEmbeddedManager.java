@@ -28,10 +28,10 @@ import org.apache.logging.log4j.core.appender.ManagerFactory;
 import org.apache.logging.log4j.core.config.ConfigurationException;
 import org.apache.logging.log4j.core.config.Property;
 import org.apache.logging.log4j.core.util.NameUtil;
-import org.apache.logging.log4j.util.PropertiesUtil;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.Strings;
 
-import static org.apache.logging.log4j.util.Strings.toRootUpperCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootUpperCase;
 
 public class FlumeEmbeddedManager extends AbstractFlumeManager {
 

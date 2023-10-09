@@ -19,6 +19,8 @@ package org.apache.logging.log4j.util;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PropertySource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

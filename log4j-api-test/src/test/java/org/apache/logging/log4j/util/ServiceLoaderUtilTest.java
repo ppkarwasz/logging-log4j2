@@ -28,6 +28,8 @@ import org.apache.logging.log4j.test.BetterService;
 import org.apache.logging.log4j.test.ListStatusListener;
 import org.apache.logging.log4j.test.Service;
 import org.apache.logging.log4j.test.junit.UsingStatusListener;
+import org.apache.logging.log4j.util.internal.PropertySource;
+import org.apache.logging.log4j.util.internal.ServiceLoaderUtil;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

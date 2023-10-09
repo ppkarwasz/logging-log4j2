@@ -22,7 +22,7 @@ import java.util.Random;
 
 import org.apache.logging.log4j.message.Message;
 import org.apache.logging.log4j.message.StringFormattedMessage;
-import org.apache.logging.log4j.util.StackLocatorUtil;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Scope;

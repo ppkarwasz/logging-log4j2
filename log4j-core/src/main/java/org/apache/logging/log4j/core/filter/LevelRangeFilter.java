@@ -26,7 +26,7 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.config.plugins.PluginAttribute;
 import org.apache.logging.log4j.core.config.plugins.PluginFactory;
 import org.apache.logging.log4j.message.Message;
-import org.apache.logging.log4j.util.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
 
 /**
  * This filter returns the {@link #onMatch} result if the level of the {@link LogEvent} is in the range of the configured {@link #minLevel} and {@link #maxLevel} values, otherwise it returns the {@link #onMismatch} result.

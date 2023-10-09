@@ -38,7 +38,7 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.net.Facility;
 import org.apache.logging.log4j.core.net.Protocol;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 import org.w3c.dom.Element;
 
 import static org.apache.log4j.builders.BuilderManager.CATEGORY;

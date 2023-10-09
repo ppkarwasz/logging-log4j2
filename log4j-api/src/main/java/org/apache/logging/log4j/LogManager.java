@@ -30,11 +30,11 @@ import org.apache.logging.log4j.spi.LoggerContextFactory;
 import org.apache.logging.log4j.spi.Provider;
 import org.apache.logging.log4j.spi.Terminable;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.LoaderUtil;
-import org.apache.logging.log4j.util.PropertiesUtil;
-import org.apache.logging.log4j.util.ProviderUtil;
-import org.apache.logging.log4j.util.StackLocatorUtil;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.LoaderUtil;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.ProviderUtil;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * The anchor point for the Log4j logging system. The most common usage of this class is to obtain a named

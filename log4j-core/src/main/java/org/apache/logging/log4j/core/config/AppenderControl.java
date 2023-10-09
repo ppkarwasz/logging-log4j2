@@ -25,7 +25,7 @@ import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.appender.AppenderLoggingException;
 import org.apache.logging.log4j.core.filter.AbstractFilterable;
 import org.apache.logging.log4j.core.filter.Filterable;
-import org.apache.logging.log4j.util.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
 
 /**
  * Wraps an {@link Appender} with details an appender implementation shouldn't need to know about.

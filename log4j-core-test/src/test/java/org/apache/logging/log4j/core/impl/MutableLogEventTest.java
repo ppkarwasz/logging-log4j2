@@ -34,8 +34,8 @@ import org.apache.logging.log4j.message.ReusableSimpleMessage;
 import org.apache.logging.log4j.message.SimpleMessage;
 import org.apache.logging.log4j.spi.MutableThreadContextStack;
 import org.apache.logging.log4j.util.FilteredObjectInputStream;
-import org.apache.logging.log4j.util.SortedArrayStringMap;
 import org.apache.logging.log4j.util.StringMap;
+import org.apache.logging.log4j.util.internal.SortedArrayStringMap;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

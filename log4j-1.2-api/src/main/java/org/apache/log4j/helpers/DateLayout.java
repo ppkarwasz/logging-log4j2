@@ -25,7 +25,7 @@ import java.util.TimeZone;
 import org.apache.log4j.Layout;
 import org.apache.log4j.spi.LoggingEvent;
 
-import static org.apache.logging.log4j.util.Strings.toRootUpperCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootUpperCase;
 
 /**
  * This abstract layout takes care of all the date related options and formatting work.

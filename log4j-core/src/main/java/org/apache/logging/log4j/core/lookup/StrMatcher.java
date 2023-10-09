@@ -19,7 +19,7 @@ package org.apache.logging.log4j.core.lookup;
 import java.util.Arrays;
 
 import org.apache.logging.log4j.util.Chars;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * A matcher class that can be queried to determine if a character array

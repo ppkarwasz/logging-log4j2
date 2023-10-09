@@ -18,7 +18,7 @@ package org.apache.log4j.xml;
 
 import org.apache.log4j.Level;
 
-import static org.apache.logging.log4j.util.Strings.toRootUpperCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootUpperCase;
 
 /**
  * This class introduces a new level called TRACE. TRACE has lower level than DEBUG.

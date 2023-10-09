@@ -21,7 +21,7 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
 public class LegacyBsdTlsSyslogInputStreamReader extends TlsSyslogInputStreamReaderBase {
     private final ByteArrayOutputStream buffer;

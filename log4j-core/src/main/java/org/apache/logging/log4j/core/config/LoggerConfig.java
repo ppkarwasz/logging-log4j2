@@ -53,10 +53,10 @@ import org.apache.logging.log4j.core.util.Booleans;
 import org.apache.logging.log4j.core.util.Constants;
 import org.apache.logging.log4j.core.util.Loader;
 import org.apache.logging.log4j.message.Message;
-import org.apache.logging.log4j.util.PerformanceSensitive;
-import org.apache.logging.log4j.util.PropertiesUtil;
-import org.apache.logging.log4j.util.StackLocatorUtil;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * Logger object that is created via configuration.

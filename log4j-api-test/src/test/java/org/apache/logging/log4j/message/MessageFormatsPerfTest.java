@@ -16,7 +16,7 @@
  */
 package org.apache.logging.log4j.message;
 
-import org.apache.logging.log4j.util.Timer;
+import org.apache.logging.log4j.util.internal.Timer;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;

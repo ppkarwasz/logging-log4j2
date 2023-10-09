@@ -22,7 +22,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 import org.apache.logging.log4j.util.StringBuilderFormattable;
-import org.apache.logging.log4j.util.StringBuilders;
+import org.apache.logging.log4j.util.internal.StringBuilders;
 
 /**
  * Handles messages that contain an Object.

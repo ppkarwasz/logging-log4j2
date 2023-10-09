@@ -42,9 +42,9 @@ import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.util.FileWatcher;
 import org.apache.logging.log4j.core.util.WatchManager;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
-import static org.apache.logging.log4j.util.Strings.toRootLowerCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootLowerCase;
 
 /**
  * Manages the scripts use by the Configuration.

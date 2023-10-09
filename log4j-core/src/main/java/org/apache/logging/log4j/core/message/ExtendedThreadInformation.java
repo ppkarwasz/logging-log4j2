@@ -21,7 +21,7 @@ import java.lang.management.MonitorInfo;
 import java.lang.management.ThreadInfo;
 
 import org.apache.logging.log4j.message.ThreadInformation;
-import org.apache.logging.log4j.util.StringBuilders;
+import org.apache.logging.log4j.util.internal.StringBuilders;
 
 import static org.apache.logging.log4j.util.Chars.LF;
 

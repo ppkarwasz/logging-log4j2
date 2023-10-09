@@ -28,7 +28,7 @@ import org.apache.log4j.spi.LoggingEvent;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.impl.Log4jLogEvent;
 import org.apache.logging.log4j.message.SimpleMessage;
-import org.apache.logging.log4j.util.SortedArrayStringMap;
+import org.apache.logging.log4j.util.internal.SortedArrayStringMap;
 
 /**
  * This policy rewrites events by adding

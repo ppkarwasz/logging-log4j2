@@ -19,9 +19,9 @@ package org.apache.logging.log4j.layout.template.json.resolver;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.impl.Log4jLogEvent;
 import org.apache.logging.log4j.layout.template.json.JsonTemplateLayout;
-import org.apache.logging.log4j.util.SortedArrayStringMap;
 import org.apache.logging.log4j.util.StringMap;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.SortedArrayStringMap;
+import org.apache.logging.log4j.util.internal.Strings;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

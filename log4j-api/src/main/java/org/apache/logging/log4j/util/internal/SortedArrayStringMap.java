@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.util;
+package org.apache.logging.log4j.util.internal;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -34,6 +34,10 @@ import java.util.Map;
 import java.util.Objects;
 
 import org.apache.logging.log4j.status.StatusLogger;
+import org.apache.logging.log4j.util.BiConsumer;
+import org.apache.logging.log4j.util.ReadOnlyStringMap;
+import org.apache.logging.log4j.util.StringMap;
+import org.apache.logging.log4j.util.TriConsumer;
 
 /**
  * <em>Consider this class private.</em>

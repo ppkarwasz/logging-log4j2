@@ -25,7 +25,7 @@ import org.apache.logging.log4j.core.ErrorHandler;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.message.SimpleMessage;
 import org.apache.logging.log4j.status.StatusData;
-import org.apache.logging.log4j.util.StackLocatorUtil;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
 
 public class ListErrorHandler implements ErrorHandler {
 

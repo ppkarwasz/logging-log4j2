@@ -41,8 +41,8 @@ import org.apache.logging.log4j.message.MessageFactory;
 import org.apache.logging.log4j.message.ReusableMessage;
 import org.apache.logging.log4j.spi.AbstractLogger;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.StackLocatorUtil;
 import org.apache.logging.log4j.util.StringMap;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
 
 /**
  * AsyncLogger is a logger designed for high throughput and low latency logging. It does not perform any I/O in the

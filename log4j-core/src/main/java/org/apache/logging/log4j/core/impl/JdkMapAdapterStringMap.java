@@ -25,8 +25,8 @@ import java.util.Objects;
 import org.apache.logging.log4j.util.BiConsumer;
 import org.apache.logging.log4j.util.ReadOnlyStringMap;
 import org.apache.logging.log4j.util.StringMap;
-import org.apache.logging.log4j.util.Strings;
 import org.apache.logging.log4j.util.TriConsumer;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * Provides a read-only {@code StringMap} view of a {@code Map<String, String>}.

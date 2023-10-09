@@ -32,7 +32,7 @@ import org.apache.logging.log4j.core.time.MutableInstant;
 import org.apache.logging.log4j.core.util.Constants;
 import org.apache.logging.log4j.core.util.datetime.FixedDateFormat;
 import org.apache.logging.log4j.core.util.datetime.FixedDateFormat.FixedTimeZoneFormat;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

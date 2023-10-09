@@ -25,9 +25,9 @@ import jakarta.servlet.ServletContextListener;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LifeCycle2;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
-import static org.apache.logging.log4j.util.Strings.toRootUpperCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootUpperCase;
 
 /**
  * In environments older than Servlet 3.0, this initializer is responsible for starting up Log4j logging before anything

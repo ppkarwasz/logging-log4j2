@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.util;
+package org.apache.logging.log4j.util.internal;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,6 +38,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 import aQute.bnd.annotation.Cardinality;
 import aQute.bnd.annotation.Resolution;
 import aQute.bnd.annotation.spi.ServiceConsumer;
+import org.apache.logging.log4j.util.Supplier;
 
 /**
  * <em>Consider this class private.</em>
@@ -46,7 +47,7 @@ import aQute.bnd.annotation.spi.ServiceConsumer;
  * system. Properties by default are loaded from the system properties, system environment, and a classpath resource
  * file named {@value #LOG4J_PROPERTIES_FILE_NAME}. Additional properties can be loaded by implementing a custom
  * {@link PropertySource} service and specifying it via a {@link ServiceLoader} file called
- * {@code META-INF/services/org.apache.logging.log4j.util.PropertySource} with a list of fully qualified class names
+ * {@code META-INF/services/org.apache.logging.log4j.util.internal.PropertySource} with a list of fully qualified class names
  * implementing that interface.
  * </p>
  *

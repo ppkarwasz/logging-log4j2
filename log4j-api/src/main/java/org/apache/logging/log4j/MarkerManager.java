@@ -20,8 +20,8 @@ import java.util.Arrays;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import org.apache.logging.log4j.util.PerformanceSensitive;
 import org.apache.logging.log4j.util.StringBuilderFormattable;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
 
 /**
  * Applications create Markers by using the Marker Manager. All Markers created by this Manager are immutable.

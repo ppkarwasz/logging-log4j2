@@ -20,7 +20,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import org.apache.logging.log4j.util.StringBuilders;
+import org.apache.logging.log4j.util.internal.StringBuilders;
 
 /**
  * Supports parameter formatting as used in ParameterizedMessage and ReusableParameterizedMessage.

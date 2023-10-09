@@ -18,7 +18,7 @@ package org.apache.logging.log4j.message;
 
 import java.util.Map;
 
-import org.apache.logging.log4j.util.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
 
 /**
  * A {@link StringMapMessage} typed to {@link String}-only values. This is like the MapMessage class before 2.9.

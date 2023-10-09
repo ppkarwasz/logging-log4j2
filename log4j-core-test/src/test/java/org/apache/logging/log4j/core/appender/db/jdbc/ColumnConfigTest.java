@@ -16,7 +16,7 @@
  */
 package org.apache.logging.log4j.core.appender.db.jdbc;
 
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

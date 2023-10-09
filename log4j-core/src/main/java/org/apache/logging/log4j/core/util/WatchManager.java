@@ -39,7 +39,7 @@ import org.apache.logging.log4j.core.AbstractLifeCycle;
 import org.apache.logging.log4j.core.config.ConfigurationFileWatcher;
 import org.apache.logging.log4j.core.config.ConfigurationScheduler;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.ServiceLoaderUtil;
+import org.apache.logging.log4j.util.internal.ServiceLoaderUtil;
 
 /**
  * Manages {@link FileWatcher}s.

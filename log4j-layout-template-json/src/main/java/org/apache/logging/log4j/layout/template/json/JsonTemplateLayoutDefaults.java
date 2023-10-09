@@ -23,7 +23,7 @@ import java.util.TimeZone;
 
 import org.apache.logging.log4j.layout.template.json.util.RecyclerFactories;
 import org.apache.logging.log4j.layout.template.json.util.RecyclerFactory;
-import org.apache.logging.log4j.util.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 public final class JsonTemplateLayoutDefaults {
 

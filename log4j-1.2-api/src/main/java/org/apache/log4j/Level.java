@@ -23,9 +23,9 @@ import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 import org.apache.log4j.helpers.OptionConverter;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
-import static org.apache.logging.log4j.util.Strings.toRootUpperCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootUpperCase;
 
 /**
  * Defines the minimum set of levels recognized by the system, that is

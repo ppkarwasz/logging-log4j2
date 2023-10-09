@@ -20,8 +20,8 @@ import java.io.Serializable;
 
 import org.apache.logging.log4j.spi.AbstractLogger;
 import org.apache.logging.log4j.util.StringBuilderFormattable;
-import org.apache.logging.log4j.util.StringBuilders;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.StringBuilders;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * Default factory for flow messages.

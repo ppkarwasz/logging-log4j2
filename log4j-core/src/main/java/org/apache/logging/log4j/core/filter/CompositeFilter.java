@@ -35,7 +35,7 @@ import org.apache.logging.log4j.core.config.plugins.PluginElement;
 import org.apache.logging.log4j.core.config.plugins.PluginFactory;
 import org.apache.logging.log4j.core.util.ObjectArrayIterator;
 import org.apache.logging.log4j.message.Message;
-import org.apache.logging.log4j.util.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
 
 /**
  * Composes and invokes one or more filters.

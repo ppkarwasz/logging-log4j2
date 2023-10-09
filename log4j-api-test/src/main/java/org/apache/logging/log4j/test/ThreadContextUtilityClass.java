@@ -19,7 +19,7 @@ package org.apache.logging.log4j.test;
 import java.util.Map;
 
 import org.apache.logging.log4j.ThreadContext;
-import org.apache.logging.log4j.util.Timer;
+import org.apache.logging.log4j.util.internal.Timer;
 
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;

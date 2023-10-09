@@ -18,6 +18,7 @@ package org.apache.logging.log4j;
 
 import org.apache.logging.log4j.message.Message;
 import org.apache.logging.log4j.util.Supplier;
+import org.apache.logging.log4j.util.internal.Unbox;
 
 
 /**
@@ -84,7 +85,7 @@ public interface LogBuilder {
      * @param message the message to log; the format depends on the message factory.
      * @param params parameters to the message.
      *
-     * @see org.apache.logging.log4j.util.Unbox
+     * @see Unbox
      */
     default void log(String message, Object... params) {
     }
@@ -136,7 +137,7 @@ public interface LogBuilder {
      * @param message the message to log; the format depends on the message factory.
      * @param p0 parameter to the message.
      *
-     * @see org.apache.logging.log4j.util.Unbox
+     * @see Unbox
      */
     default void log(String message, Object p0) {
     }
@@ -148,7 +149,7 @@ public interface LogBuilder {
      * @param p0 parameter to the message.
      * @param p1 parameter to the message.
      *
-     * @see org.apache.logging.log4j.util.Unbox
+     * @see Unbox
      */
     default void log(String message, Object p0, Object p1) {
     }
@@ -161,7 +162,7 @@ public interface LogBuilder {
      * @param p1 parameter to the message.
      * @param p2 parameter to the message.
      *
-     * @see org.apache.logging.log4j.util.Unbox
+     * @see Unbox
      */
     default void log(String message, Object p0, Object p1, Object p2) {
     }
@@ -175,7 +176,7 @@ public interface LogBuilder {
      * @param p2 parameter to the message.
      * @param p3 parameter to the message.
      *
-     * @see org.apache.logging.log4j.util.Unbox
+     * @see Unbox
      */
     default void log(String message, Object p0, Object p1, Object p2, Object p3) {
     }
@@ -190,7 +191,7 @@ public interface LogBuilder {
      * @param p3 parameter to the message.
      * @param p4 parameter to the message.
      *
-     * @see org.apache.logging.log4j.util.Unbox
+     * @see Unbox
      */
     default void log(String message, Object p0, Object p1, Object p2, Object p3, Object p4) {
     }
@@ -206,7 +207,7 @@ public interface LogBuilder {
      * @param p4 parameter to the message.
      * @param p5 parameter to the message.
      *
-     * @see org.apache.logging.log4j.util.Unbox
+     * @see Unbox
      */
     default void log(String message, Object p0, Object p1, Object p2, Object p3, Object p4, Object p5) {
     }
@@ -223,7 +224,7 @@ public interface LogBuilder {
      * @param p5 parameter to the message.
      * @param p6 parameter to the message.
      *
-     * @see org.apache.logging.log4j.util.Unbox
+     * @see Unbox
      */
     default void log(String message, Object p0, Object p1, Object p2, Object p3, Object p4, Object p5, Object p6) {
     }
@@ -241,7 +242,7 @@ public interface LogBuilder {
      * @param p6 parameter to the message.
      * @param p7 parameter to the message.
      *
-     * @see org.apache.logging.log4j.util.Unbox
+     * @see Unbox
      */
     default void log(String message, Object p0, Object p1, Object p2, Object p3, Object p4, Object p5, Object p6,
             Object p7) {
@@ -261,7 +262,7 @@ public interface LogBuilder {
      * @param p7 parameter to the message.
      * @param p8 parameter to the message.
      *
-     * @see org.apache.logging.log4j.util.Unbox
+     * @see Unbox
      */
     default void log(String message, Object p0, Object p1, Object p2, Object p3, Object p4, Object p5, Object p6,
             Object p7, Object p8) {
@@ -282,7 +283,7 @@ public interface LogBuilder {
      * @param p8 parameter to the message.
      * @param p9 parameter to the message.
      *
-     * @see org.apache.logging.log4j.util.Unbox
+     * @see Unbox
      */
     default void log(String message, Object p0, Object p1, Object p2, Object p3, Object p4, Object p5, Object p6,
             Object p7, Object p8, Object p9) {

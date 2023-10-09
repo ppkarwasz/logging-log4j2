@@ -16,8 +16,8 @@
  */
 package org.apache.logging.log4j.message;
 
-import org.apache.logging.log4j.util.PerformanceSensitive;
 import org.apache.logging.log4j.util.StringBuilderFormattable;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
 
 /**
  * Messages implementing this interface are reused between logging calls.

@@ -20,8 +20,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.logging.log4j.spi.CleanableThreadContextMap;
-import org.apache.logging.log4j.util.SortedArrayStringMap;
 import org.apache.logging.log4j.util.StringMap;
+import org.apache.logging.log4j.util.internal.SortedArrayStringMap;
 import org.slf4j.MDC;
 
 /**

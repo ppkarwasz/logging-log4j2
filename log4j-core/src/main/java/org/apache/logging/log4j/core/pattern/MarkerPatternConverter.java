@@ -19,8 +19,8 @@ package org.apache.logging.log4j.core.pattern;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
-import org.apache.logging.log4j.util.PerformanceSensitive;
-import org.apache.logging.log4j.util.StringBuilders;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.StringBuilders;
 
 /**
  * Returns events' full marker string in a StringBuilder.

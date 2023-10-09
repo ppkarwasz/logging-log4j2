@@ -17,9 +17,9 @@
 package org.apache.logging.log4j.spi;
 
 import org.apache.logging.log4j.perf.nogc.OpenHashStringMap;
-import org.apache.logging.log4j.util.PropertiesUtil;
 import org.apache.logging.log4j.util.ReadOnlyStringMap;
 import org.apache.logging.log4j.util.StringMap;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 /**
  * {@code OpenHashStringMap}-based implementation of the {@code ThreadContextMap} interface that attempts not to

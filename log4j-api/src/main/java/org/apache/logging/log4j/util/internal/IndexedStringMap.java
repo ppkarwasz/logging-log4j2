@@ -14,7 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.util;
+package org.apache.logging.log4j.util.internal;
+
+import org.apache.logging.log4j.util.BiConsumer;
+import org.apache.logging.log4j.util.IndexedReadOnlyStringMap;
+import org.apache.logging.log4j.util.StringMap;
+import org.apache.logging.log4j.util.TriConsumer;
 
 /**
  * An extension of {@code StringMap} that imposes a total ordering on its keys.

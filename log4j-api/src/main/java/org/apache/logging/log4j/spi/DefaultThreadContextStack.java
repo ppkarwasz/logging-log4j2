@@ -23,8 +23,8 @@ import java.util.List;
 
 import org.apache.logging.log4j.ThreadContext.ContextStack;
 import org.apache.logging.log4j.util.StringBuilderFormattable;
-import org.apache.logging.log4j.util.StringBuilders;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.StringBuilders;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * A copy-on-write thread-safe variant of {@code org.apache.logging.log4j.spi.ThreadContextStack} in which all mutative

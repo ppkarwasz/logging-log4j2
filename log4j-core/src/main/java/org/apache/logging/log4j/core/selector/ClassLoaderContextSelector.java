@@ -32,7 +32,7 @@ import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.impl.ContextAnchor;
 import org.apache.logging.log4j.spi.LoggerContextShutdownAware;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.StackLocatorUtil;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
 
 /**
  * This ContextSelector chooses a LoggerContext based upon the ClassLoader of the caller. This allows Loggers assigned

@@ -53,8 +53,8 @@ import org.apache.logging.log4j.message.MapMessage;
 import org.apache.logging.log4j.message.Message;
 import org.apache.logging.log4j.status.StatusLogger;
 import org.apache.logging.log4j.util.StringBuilderFormattable;
-import org.apache.logging.log4j.util.Strings;
 import org.apache.logging.log4j.util.TriConsumer;
+import org.apache.logging.log4j.util.internal.Strings;
 
 import static org.apache.logging.log4j.util.Chars.LF;
 import static org.apache.logging.log4j.util.Chars.NUL;

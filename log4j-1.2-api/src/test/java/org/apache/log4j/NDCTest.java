@@ -18,7 +18,7 @@ package org.apache.log4j;
 
 import java.util.Stack;
 
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 import org.junit.Assert;
 import org.junit.Test;
 

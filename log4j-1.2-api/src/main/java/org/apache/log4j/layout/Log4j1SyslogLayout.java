@@ -38,7 +38,7 @@ import org.apache.logging.log4j.core.pattern.LogEventPatternConverter;
 import org.apache.logging.log4j.core.util.NetUtils;
 import org.apache.logging.log4j.util.Chars;
 
-import static org.apache.logging.log4j.util.Strings.toRootLowerCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootLowerCase;
 
 /**
  * Port of the layout used by SyslogAppender in Log4j 1.x. Provided for

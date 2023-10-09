@@ -38,7 +38,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.layout.template.json.util.JsonReader;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * Utility class to summarize {@link JsonTemplateLayoutBenchmark} results in Asciidoctor.

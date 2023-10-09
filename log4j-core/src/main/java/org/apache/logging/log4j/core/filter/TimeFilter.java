@@ -36,7 +36,7 @@ import org.apache.logging.log4j.core.config.plugins.PluginFactory;
 import org.apache.logging.log4j.core.util.Clock;
 import org.apache.logging.log4j.core.util.ClockFactory;
 import org.apache.logging.log4j.message.Message;
-import org.apache.logging.log4j.util.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
 
 /**
  * Filters events that fall within a specified time period in each day.

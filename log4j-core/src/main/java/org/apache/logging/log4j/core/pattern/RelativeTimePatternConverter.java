@@ -20,7 +20,7 @@ import java.lang.management.ManagementFactory;
 
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
-import org.apache.logging.log4j.util.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
 
 /**
  * Returns the relative time in milliseconds since JVM Startup.

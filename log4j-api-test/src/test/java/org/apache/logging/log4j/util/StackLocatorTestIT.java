@@ -20,6 +20,7 @@ import java.security.Permission;
 import java.util.Deque;
 
 import org.apache.logging.log4j.test.junit.SecurityManagerTestRule;
+import org.apache.logging.log4j.util.internal.StackLocator;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;

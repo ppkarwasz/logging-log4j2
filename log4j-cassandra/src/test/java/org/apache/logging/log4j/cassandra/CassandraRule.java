@@ -38,7 +38,7 @@ import org.apache.logging.log4j.LoggingException;
 import org.apache.logging.log4j.core.util.Cancellable;
 import org.apache.logging.log4j.core.util.Closer;
 import org.apache.logging.log4j.core.util.Log4jThreadFactory;
-import org.apache.logging.log4j.util.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 import org.junit.rules.ExternalResource;
 
 import static org.junit.Assert.assertNotNull;

@@ -49,7 +49,7 @@ import org.apache.log4j.spi.ThrowableRenderer;
 import org.apache.log4j.spi.ThrowableRendererSupport;
 import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.net.UrlConnectionFactory;
-import org.apache.logging.log4j.util.StackLocatorUtil;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
 
 /**
  * Configures Log4j from properties.

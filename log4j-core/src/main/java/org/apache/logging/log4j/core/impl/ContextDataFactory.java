@@ -24,10 +24,10 @@ import org.apache.logging.log4j.core.ContextDataInjector;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.util.Loader;
 import org.apache.logging.log4j.util.IndexedStringMap;
-import org.apache.logging.log4j.util.PropertiesUtil;
 import org.apache.logging.log4j.util.ReadOnlyStringMap;
-import org.apache.logging.log4j.util.SortedArrayStringMap;
 import org.apache.logging.log4j.util.StringMap;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.SortedArrayStringMap;
 
 /**
  * Factory for creating the StringMap instances used to initialize LogEvents' {@linkplain LogEvent#getContextData()

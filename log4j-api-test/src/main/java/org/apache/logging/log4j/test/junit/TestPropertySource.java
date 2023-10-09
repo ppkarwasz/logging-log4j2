@@ -17,7 +17,7 @@
 package org.apache.logging.log4j.test.junit;
 
 import org.apache.logging.log4j.test.TestProperties;
-import org.apache.logging.log4j.util.PropertySource;
+import org.apache.logging.log4j.util.internal.PropertySource;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
 import org.junit.jupiter.api.extension.ExtensionContext.Store;

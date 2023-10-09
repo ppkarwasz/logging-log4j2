@@ -20,9 +20,9 @@ import java.util.Arrays;
 import java.util.Objects;
 
 import org.apache.logging.log4j.message.ParameterFormatter.MessagePatternAnalysis;
-import org.apache.logging.log4j.util.Constants;
 import org.apache.logging.log4j.util.StringBuilderFormattable;
-import org.apache.logging.log4j.util.StringBuilders;
+import org.apache.logging.log4j.util.internal.Constants;
+import org.apache.logging.log4j.util.internal.StringBuilders;
 
 import static org.apache.logging.log4j.message.ParameterFormatter.analyzePattern;
 

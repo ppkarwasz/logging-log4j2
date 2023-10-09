@@ -21,7 +21,7 @@ import java.io.PrintStream;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.message.MessageFactory;
 import org.apache.logging.log4j.simple.SimpleLogger;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * {@link org.apache.logging.log4j.simple.SimpleLogger} factory to be used by {@link StatusLogger} and {@link StatusConsoleListener}.

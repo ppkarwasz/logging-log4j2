@@ -23,6 +23,9 @@ import java.security.Permission;
 import java.util.PropertyPermission;
 
 import org.apache.logging.log4j.test.junit.SecurityManagerTestRule;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PropertyFilePropertySource;
+import org.apache.logging.log4j.util.internal.SystemPropertiesPropertySource;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;

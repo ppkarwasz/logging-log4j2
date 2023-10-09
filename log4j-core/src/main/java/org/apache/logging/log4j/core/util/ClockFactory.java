@@ -21,8 +21,8 @@ import java.util.Map;
 
 import org.apache.logging.log4j.core.time.PreciseClock;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.PropertiesUtil;
 import org.apache.logging.log4j.util.Supplier;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 /**
  * Factory for {@code Clock} objects.

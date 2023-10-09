@@ -42,8 +42,8 @@ import org.apache.logging.log4j.core.config.builder.api.ScriptFileComponentBuild
 import org.apache.logging.log4j.core.filter.AbstractFilter.AbstractFilterBuilder;
 import org.apache.logging.log4j.core.util.Builder;
 import org.apache.logging.log4j.core.util.Integers;
-import org.apache.logging.log4j.util.PropertiesUtil;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * Helper builder for parsing properties files into a PropertiesConfiguration.

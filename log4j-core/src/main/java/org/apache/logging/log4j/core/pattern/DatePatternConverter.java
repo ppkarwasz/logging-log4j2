@@ -31,7 +31,7 @@ import org.apache.logging.log4j.core.util.Constants;
 import org.apache.logging.log4j.core.util.datetime.FastDateFormat;
 import org.apache.logging.log4j.core.util.datetime.FixedDateFormat;
 import org.apache.logging.log4j.core.util.datetime.FixedDateFormat.FixedFormat;
-import org.apache.logging.log4j.util.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
 
 /**
  * Converts and formats the event's date in a StringBuilder.

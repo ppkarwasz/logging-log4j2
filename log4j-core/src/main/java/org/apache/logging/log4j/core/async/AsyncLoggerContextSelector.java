@@ -21,7 +21,7 @@ import java.net.URI;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.selector.ClassLoaderContextSelector;
 import org.apache.logging.log4j.core.util.Constants;
-import org.apache.logging.log4j.util.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 /**
  * {@code ContextSelector} that manages {@code AsyncLoggerContext} instances.

@@ -16,7 +16,7 @@
  */
 package org.apache.logging.log4j.core.util;
 
-import org.apache.logging.log4j.util.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 /**
  * Log4j Constants.

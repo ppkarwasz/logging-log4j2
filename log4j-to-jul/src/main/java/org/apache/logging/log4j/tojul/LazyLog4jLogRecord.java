@@ -19,7 +19,7 @@ package org.apache.logging.log4j.tojul;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
-import org.apache.logging.log4j.util.StackLocatorUtil;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
 
 /**
  * Extension of {@link java.util.logging.LogRecord} with lazy get source related methods based on Log4j's {@link StackLocatorUtil#calcLocation(String)}.

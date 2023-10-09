@@ -16,7 +16,7 @@
  */
 package org.apache.logging.slf4j;
 
-import org.apache.logging.log4j.util.ProviderActivator;
+import org.apache.logging.log4j.util.internal.ProviderActivator;
 
 public class Activator extends ProviderActivator {
 

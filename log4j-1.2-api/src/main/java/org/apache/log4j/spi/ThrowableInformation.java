@@ -21,7 +21,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 import org.apache.log4j.Category;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * Log4j's internal representation of throwables.

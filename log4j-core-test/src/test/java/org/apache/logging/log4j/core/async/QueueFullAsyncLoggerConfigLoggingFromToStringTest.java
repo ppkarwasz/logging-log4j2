@@ -23,7 +23,6 @@ import org.apache.logging.log4j.test.junit.SetTestProperty;
 import org.apache.logging.log4j.util.Constants;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
 /**
  * Tests queue full scenarios with AsyncLoggers in configuration.
  */

@@ -33,7 +33,7 @@ import org.apache.logging.log4j.core.net.JndiManager;
 import org.apache.logging.log4j.core.util.ReflectionUtil;
 import org.apache.logging.log4j.status.StatusLogger;
 
-import static org.apache.logging.log4j.util.Strings.toRootLowerCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootLowerCase;
 
 /**
  * Proxies all the other {@link StrLookup}s.

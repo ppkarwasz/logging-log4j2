@@ -33,7 +33,7 @@ import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.TearDown;
 import org.slf4j.LoggerFactory;
 
-import static org.apache.logging.log4j.util.Unbox.*;
+import static org.apache.logging.log4j.util.internal.Unbox.*;
 
 /**
  * Benchmarks Log4j 2, Log4j 1, Logback and JUL using the DEBUG level which is enabled for this test. The configuration

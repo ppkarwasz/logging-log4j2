@@ -20,7 +20,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.core.test.appender.ListAppender;
 import org.apache.logging.log4j.core.test.junit.LoggerContextRule;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;

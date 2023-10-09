@@ -19,7 +19,7 @@ package org.apache.logging.log4j.core.net.ssl;
 import java.util.Properties;
 import java.util.stream.Stream;
 
-import org.apache.logging.log4j.util.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;

@@ -37,9 +37,9 @@ import org.apache.logging.log4j.message.MapMessage;
 import org.apache.logging.log4j.message.Message;
 import org.apache.logging.log4j.util.IndexedReadOnlyStringMap;
 import org.apache.logging.log4j.util.IndexedStringMap;
-import org.apache.logging.log4j.util.PerformanceSensitive;
 import org.apache.logging.log4j.util.ReadOnlyStringMap;
-import org.apache.logging.log4j.util.SortedArrayStringMap;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.SortedArrayStringMap;
 
 /**
  * A Filter that operates on a Map.

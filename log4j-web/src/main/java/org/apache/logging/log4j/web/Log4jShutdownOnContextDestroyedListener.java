@@ -25,9 +25,9 @@ import javax.servlet.ServletContextListener;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LifeCycle2;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
-import static org.apache.logging.log4j.util.Strings.toRootUpperCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootUpperCase;
 
 public class Log4jShutdownOnContextDestroyedListener implements ServletContextListener {
 

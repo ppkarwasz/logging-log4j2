@@ -14,14 +14,13 @@
  * See the license for the specific language governing permissions and
  * limitations under the license.
  */
-
 /**
- * Simple logging implementation. This is a rather minimal Log4j Provider that is used by default if no other Log4j
- * Providers are able to be loaded at runtime.
+ * Internal utility classes for the Log4j 2 API. Note that the use of any classes in this package is not supported.
+ * There are no guarantees for binary or logical compatibility in this package.
  */
 @Export
-@Version("3.0.0")
-package org.apache.logging.log4j.simple;
+@Version("1.0.0")
+package org.apache.logging.log4j.util.internal;
 
 import org.osgi.annotation.bundle.Export;
 import org.osgi.annotation.versioning.Version;

@@ -22,7 +22,7 @@ import java.lang.System.LoggerFinder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.spi.AbstractLoggerAdapter;
 import org.apache.logging.log4j.spi.LoggerContext;
-import org.apache.logging.log4j.util.StackLocatorUtil;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
 
 /**
  * {@link Logger} registry implementation using just log4j-api.

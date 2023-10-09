@@ -37,7 +37,7 @@ import org.apache.log4j.spi.ThrowableRendererSupport;
 import org.apache.logging.log4j.core.appender.AsyncAppender;
 import org.apache.logging.log4j.spi.AbstractLoggerAdapter;
 import org.apache.logging.log4j.spi.LoggerContext;
-import org.apache.logging.log4j.util.StackLocatorUtil;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
 
 // WARNING This class MUST not have references to the Category or
 // WARNING RootCategory classes in its static initialization neither

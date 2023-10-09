@@ -27,7 +27,7 @@ import java.util.Enumeration;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static org.apache.logging.log4j.util.Strings.toRootLowerCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootLowerCase;
 
 /**
  *

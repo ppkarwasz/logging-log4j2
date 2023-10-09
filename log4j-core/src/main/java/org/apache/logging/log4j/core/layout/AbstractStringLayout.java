@@ -33,9 +33,9 @@ import org.apache.logging.log4j.core.impl.LocationAware;
 import org.apache.logging.log4j.core.util.Constants;
 import org.apache.logging.log4j.core.util.StringEncoder;
 import org.apache.logging.log4j.spi.AbstractLogger;
-import org.apache.logging.log4j.util.PropertiesUtil;
-import org.apache.logging.log4j.util.StringBuilders;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.StringBuilders;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * Abstract base class for Layouts that result in a String.

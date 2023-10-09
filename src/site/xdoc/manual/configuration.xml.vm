@@ -2873,7 +2873,7 @@ public class AwesomeTest {
     </td>
     <td>LOG4J_UNBOX_RINGBUFFER_SIZE</td>
     <td>32</td>
-    <td>The <tt>org.apache.logging.log4j.util.Unbox</tt> utility
+    <td>The <tt>org.apache.logging.log4j.util.internal.Unbox</tt> utility
     manages a small thread-local ring buffer of StringBuilders.
      Each time one of the <tt>box()</tt> methods is called, the next slot in the ring buffer is used, until the ring
      buffer is full and the first slot is reused. By default the Unbox ring buffer has 32 slots, so user code can

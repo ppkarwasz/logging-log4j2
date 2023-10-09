@@ -25,7 +25,7 @@ import org.apache.log4j.config.TestConfigurator;
 import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.config.Configuration;
-import org.apache.logging.log4j.util.SortedArrayStringMap;
+import org.apache.logging.log4j.util.internal.SortedArrayStringMap;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;

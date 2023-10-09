@@ -16,7 +16,7 @@
  */
 package org.apache.logging.log4j.spring.boot;
 
-import org.apache.logging.log4j.util.PropertySource;
+import org.apache.logging.log4j.util.internal.PropertySource;
 import org.springframework.core.env.Environment;
 
 /**

@@ -23,8 +23,8 @@ import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.message.Message;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.PropertiesUtil;
 import org.apache.logging.log4j.util.Supplier;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 /**
  * Reliability strategy that sleeps unconditionally for some time before allowing a Configuration to be stopped.

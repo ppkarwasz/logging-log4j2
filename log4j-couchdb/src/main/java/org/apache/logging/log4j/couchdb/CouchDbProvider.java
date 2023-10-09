@@ -28,11 +28,11 @@ import org.apache.logging.log4j.core.config.plugins.validation.constraints.Valid
 import org.apache.logging.log4j.core.config.plugins.validation.constraints.ValidPort;
 import org.apache.logging.log4j.status.StatusLogger;
 import org.apache.logging.log4j.util.LoaderUtil;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 import org.lightcouch.CouchDbClient;
 import org.lightcouch.CouchDbProperties;
 
-import static org.apache.logging.log4j.util.Strings.toRootLowerCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootLowerCase;
 
 /**
  * The Apache CouchDB implementation of {@link NoSqlProvider}.

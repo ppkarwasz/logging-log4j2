@@ -16,8 +16,8 @@
  */
 package org.apache.logging.log4j.message;
 
-import org.apache.logging.log4j.util.Constants;
-import org.apache.logging.log4j.util.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.Constants;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
 
 /**
  * Mutable Message wrapper around a String message.

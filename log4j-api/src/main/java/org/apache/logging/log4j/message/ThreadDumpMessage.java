@@ -27,11 +27,11 @@ import aQute.bnd.annotation.Cardinality;
 import aQute.bnd.annotation.Resolution;
 import aQute.bnd.annotation.spi.ServiceConsumer;
 import org.apache.logging.log4j.message.ThreadDumpMessage.ThreadInfoFactory;
-import org.apache.logging.log4j.util.ServiceLoaderUtil;
 import org.apache.logging.log4j.util.StringBuilderFormattable;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.ServiceLoaderUtil;
+import org.apache.logging.log4j.util.internal.Strings;
 
-import static org.apache.logging.log4j.util.Chars.LF;
+import static org.apache.logging.log4j.util.internal.Chars.LF;
 
 /**
  * Captures information about all running Threads.

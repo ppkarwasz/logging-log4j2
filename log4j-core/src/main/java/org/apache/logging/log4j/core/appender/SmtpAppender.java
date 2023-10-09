@@ -46,8 +46,8 @@ import org.apache.logging.log4j.core.net.SmtpManager;
 import org.apache.logging.log4j.core.net.ssl.SslConfiguration;
 import org.apache.logging.log4j.core.util.Booleans;
 import org.apache.logging.log4j.core.util.Integers;
-import org.apache.logging.log4j.util.ServiceLoaderUtil;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.ServiceLoaderUtil;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * Send an e-mail when a specific logging event occurs, typically on errors or

@@ -36,7 +36,7 @@ import org.apache.logging.log4j.core.net.Priority;
 import org.apache.logging.log4j.core.test.net.mock.MockSyslogServer;
 import org.apache.logging.log4j.message.StructuredDataMessage;
 import org.apache.logging.log4j.test.junit.UsingStatusListener;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 

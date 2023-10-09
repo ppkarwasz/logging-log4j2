@@ -21,7 +21,7 @@ import java.util.List;
 
 import org.apache.log4j.Level;
 
-import static org.apache.logging.log4j.util.Strings.toRootUpperCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootUpperCase;
 
 /**
  * An extension of the Level class that provides support for java.util.logging Levels.

@@ -39,7 +39,7 @@ import org.apache.logging.log4j.core.appender.AsyncAppender.Builder;
 import org.apache.logging.log4j.core.config.AppenderRef;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 import org.w3c.dom.Element;
 
 import static org.apache.log4j.builders.BuilderManager.CATEGORY;

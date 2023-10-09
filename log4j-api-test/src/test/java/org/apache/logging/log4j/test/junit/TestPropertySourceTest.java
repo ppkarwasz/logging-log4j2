@@ -17,7 +17,7 @@
 package org.apache.logging.log4j.test.junit;
 
 import org.apache.logging.log4j.test.TestProperties;
-import org.apache.logging.log4j.util.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -39,7 +39,7 @@ import org.apache.logging.log4j.core.test.categories.Layouts;
 import org.apache.logging.log4j.core.util.KeyValuePair;
 import org.apache.logging.log4j.message.SimpleMessage;
 import org.apache.logging.log4j.spi.AbstractLogger;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;

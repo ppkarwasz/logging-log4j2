@@ -16,6 +16,7 @@
  */
 package org.apache.logging.log4j.util;
 
+import org.apache.logging.log4j.util.internal.Unbox;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.ResourceLock;

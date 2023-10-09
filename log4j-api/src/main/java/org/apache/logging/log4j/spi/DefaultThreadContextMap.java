@@ -22,9 +22,9 @@ import java.util.Map;
 import java.util.Objects;
 
 import org.apache.logging.log4j.util.BiConsumer;
-import org.apache.logging.log4j.util.PropertiesUtil;
 import org.apache.logging.log4j.util.ReadOnlyStringMap;
 import org.apache.logging.log4j.util.TriConsumer;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 /**
  * The actual ThreadContext Map. A new ThreadContext Map is created each time it is updated and the Map stored is always

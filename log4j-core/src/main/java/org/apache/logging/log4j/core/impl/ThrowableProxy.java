@@ -29,8 +29,8 @@ import java.util.Set;
 import org.apache.logging.log4j.core.pattern.PlainTextRenderer;
 import org.apache.logging.log4j.core.pattern.TextRenderer;
 import org.apache.logging.log4j.util.Chars;
-import org.apache.logging.log4j.util.StackLocatorUtil;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * Wraps a Throwable to add packaging information about each stack trace element.

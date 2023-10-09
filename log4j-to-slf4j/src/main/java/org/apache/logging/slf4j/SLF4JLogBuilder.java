@@ -25,8 +25,8 @@ import org.apache.logging.log4j.message.SimpleMessage;
 import org.apache.logging.log4j.spi.ExtendedLogger;
 import org.apache.logging.log4j.status.StatusLogger;
 import org.apache.logging.log4j.util.LambdaUtil;
-import org.apache.logging.log4j.util.StackLocatorUtil;
 import org.apache.logging.log4j.util.Supplier;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
 
 public class SLF4JLogBuilder implements LogBuilder {
 

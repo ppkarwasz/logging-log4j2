@@ -25,7 +25,7 @@ import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.AnsiRenderer;
 import org.fusesource.jansi.AnsiRenderer.Code;
 
-import static org.apache.logging.log4j.util.Strings.toRootUpperCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootUpperCase;
 import static org.fusesource.jansi.AnsiRenderer.Code.BG_RED;
 import static org.fusesource.jansi.AnsiRenderer.Code.BOLD;
 import static org.fusesource.jansi.AnsiRenderer.Code.RED;

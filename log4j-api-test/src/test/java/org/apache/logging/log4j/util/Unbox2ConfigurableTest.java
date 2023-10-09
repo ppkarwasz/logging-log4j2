@@ -19,6 +19,7 @@ package org.apache.logging.log4j.util;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
+import org.apache.logging.log4j.util.internal.Unbox;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

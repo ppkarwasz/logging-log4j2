@@ -56,7 +56,7 @@ import org.apache.logging.log4j.layout.template.json.util.Recycler;
 import org.apache.logging.log4j.layout.template.json.util.RecyclerFactory;
 import org.apache.logging.log4j.layout.template.json.util.Uris;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
 @Plugin(name = "JsonTemplateLayout",
         category = Node.CATEGORY,

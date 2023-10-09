@@ -16,7 +16,7 @@
  */
 package org.apache.logging.log4j.tojul;
 
-import org.apache.logging.log4j.util.ProviderActivator;
+import org.apache.logging.log4j.util.internal.ProviderActivator;
 import org.osgi.annotation.bundle.Header;
 import org.osgi.framework.Constants;
 

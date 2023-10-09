@@ -19,6 +19,9 @@ package org.apache.logging.log4j.util;
 import java.util.Deque;
 import java.util.Stack;
 
+import org.apache.logging.log4j.util.internal.PrivateSecurityManagerStackTraceUtil;
+import org.apache.logging.log4j.util.internal.StackLocator;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledOnJre;
 import org.junit.jupiter.api.condition.JRE;

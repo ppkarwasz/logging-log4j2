@@ -32,7 +32,7 @@ import org.apache.logging.log4j.core.util.NetUtils;
 import org.apache.logging.log4j.docker.model.Container;
 import org.apache.logging.log4j.docker.model.Network;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 
 /**
  * Lookups up keys for a Docker container.

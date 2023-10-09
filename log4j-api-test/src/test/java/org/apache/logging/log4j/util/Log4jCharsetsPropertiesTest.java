@@ -20,6 +20,7 @@ import java.nio.charset.Charset;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

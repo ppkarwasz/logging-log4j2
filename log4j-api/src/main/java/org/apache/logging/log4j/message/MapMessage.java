@@ -22,17 +22,17 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import org.apache.logging.log4j.util.BiConsumer;
-import org.apache.logging.log4j.util.Chars;
-import org.apache.logging.log4j.util.EnglishEnums;
 import org.apache.logging.log4j.util.IndexedReadOnlyStringMap;
-import org.apache.logging.log4j.util.IndexedStringMap;
 import org.apache.logging.log4j.util.MultiFormatStringBuilderFormattable;
-import org.apache.logging.log4j.util.PerformanceSensitive;
 import org.apache.logging.log4j.util.ReadOnlyStringMap;
-import org.apache.logging.log4j.util.SortedArrayStringMap;
-import org.apache.logging.log4j.util.StringBuilders;
-import org.apache.logging.log4j.util.Strings;
 import org.apache.logging.log4j.util.TriConsumer;
+import org.apache.logging.log4j.util.internal.Chars;
+import org.apache.logging.log4j.util.internal.EnglishEnums;
+import org.apache.logging.log4j.util.internal.IndexedStringMap;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.SortedArrayStringMap;
+import org.apache.logging.log4j.util.internal.StringBuilders;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * Represents a Message that consists of a Map.

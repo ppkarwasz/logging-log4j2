@@ -16,6 +16,7 @@
  */
 package org.apache.logging.log4j.util;
 
+
 /**
  * Exposes methods to add and remove key-value pairs to and from {@code ReadOnlyStringMap}.
  *

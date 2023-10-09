@@ -21,7 +21,7 @@ import java.util.stream.Stream;
 
 import org.apache.logging.log4j.spi.Provider;
 import org.apache.logging.log4j.util.OsgiServiceLocator;
-import org.apache.logging.log4j.util.PropertySource;
+import org.apache.logging.log4j.util.internal.PropertySource;
 
 public class OsgiServiceLocatorTest {
 

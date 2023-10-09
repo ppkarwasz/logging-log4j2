@@ -27,9 +27,9 @@ import org.apache.logging.log4j.message.Message;
 import org.apache.logging.log4j.message.SimpleMessage;
 import org.apache.logging.log4j.spi.ExtendedLogger;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.LambdaUtil;
-import org.apache.logging.log4j.util.StackLocatorUtil;
 import org.apache.logging.log4j.util.Supplier;
+import org.apache.logging.log4j.util.internal.LambdaUtil;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
 
 /**
  * Collects data for a log event and then logs it. This class should be considered private.

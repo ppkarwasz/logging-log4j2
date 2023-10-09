@@ -43,7 +43,7 @@ import org.apache.logging.log4j.core.util.Builder;
 import org.apache.logging.log4j.core.util.ReflectionUtil;
 import org.apache.logging.log4j.core.util.TypeUtil;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.StringBuilders;
+import org.apache.logging.log4j.util.internal.StringBuilders;
 
 /**
  * Builder class to instantiate and configure a Plugin object using a PluginFactory method or PluginBuilderFactory

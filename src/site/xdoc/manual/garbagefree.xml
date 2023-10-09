@@ -444,7 +444,7 @@
           The <tt>Unbox.box(primitive)</tt> methods write directly into a StringBuilder, and
           the resulting text will be copied into the final log message text without creating temporary objects.
         </p>
-        <pre class="prettyprint linenums">import static org.apache.logging.log4j.util.Unbox.box;
+        <pre class="prettyprint linenums">import static org.apache.logging.log4j.util.internal.Unbox.box;
 
 ...
 public void garbageFree() {

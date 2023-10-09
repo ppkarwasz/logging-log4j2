@@ -25,7 +25,7 @@ import javax.persistence.PersistenceException;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * A JPA 2.1 attribute converter for {@link Map Map&lt;String, String&gt;}s in

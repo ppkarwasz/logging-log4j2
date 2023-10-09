@@ -27,7 +27,7 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 import org.apache.logging.log4j.util.LoaderUtil;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * A JPA 2.1 attribute converter for {@link Throwable}s in {@link org.apache.logging.log4j.core.LogEvent}s. This

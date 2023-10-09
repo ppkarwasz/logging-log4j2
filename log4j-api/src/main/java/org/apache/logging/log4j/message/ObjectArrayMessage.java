@@ -21,7 +21,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Arrays;
 
-import org.apache.logging.log4j.util.Constants;
+import org.apache.logging.log4j.util.internal.Constants;
 
 /**
  * Handles messages that contain an Object[].

@@ -16,6 +16,8 @@
  */
 package org.apache.logging.log4j.util;
 
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
+
 /**
  *
  */

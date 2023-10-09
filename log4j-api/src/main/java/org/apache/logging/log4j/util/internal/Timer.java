@@ -14,10 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.util;
+package org.apache.logging.log4j.util.internal;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+
+import org.apache.logging.log4j.util.StringBuilderFormattable;
 
 /**
  * Primarily used in unit tests, but can be used to track elapsed time for a request or portion of any other operation

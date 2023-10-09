@@ -58,9 +58,9 @@ import org.apache.logging.log4j.message.MessageCollectionMessage;
 import org.apache.logging.log4j.message.StructuredDataCollectionMessage;
 import org.apache.logging.log4j.message.StructuredDataId;
 import org.apache.logging.log4j.message.StructuredDataMessage;
-import org.apache.logging.log4j.util.ProcessIdUtil;
-import org.apache.logging.log4j.util.StringBuilders;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.ProcessIdUtil;
+import org.apache.logging.log4j.util.internal.StringBuilders;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * Formats a log event in accordance with RFC 5424.

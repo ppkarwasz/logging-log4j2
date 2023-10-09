@@ -36,8 +36,8 @@ import org.apache.logging.log4j.core.util.ContextDataProvider;
 import org.apache.logging.log4j.spi.ReadOnlyThreadContextMap;
 import org.apache.logging.log4j.status.StatusLogger;
 import org.apache.logging.log4j.util.ReadOnlyStringMap;
-import org.apache.logging.log4j.util.ServiceLoaderUtil;
 import org.apache.logging.log4j.util.StringMap;
+import org.apache.logging.log4j.util.internal.ServiceLoaderUtil;
 
 /**
  * {@code ThreadContextDataInjector} contains a number of strategies for copying key-value pairs from the various

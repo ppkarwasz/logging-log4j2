@@ -35,8 +35,8 @@ import org.apache.logging.log4j.core.util.KeyValuePair;
 import org.apache.logging.log4j.message.Message;
 import org.apache.logging.log4j.message.StructuredDataMessage;
 import org.apache.logging.log4j.util.IndexedReadOnlyStringMap;
-import org.apache.logging.log4j.util.PerformanceSensitive;
-import org.apache.logging.log4j.util.StringBuilders;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.StringBuilders;
 
 /**
  * Filter based on data in a StructuredDataMessage.

@@ -40,7 +40,7 @@ import org.apache.logging.log4j.test.TestProperties;
 import org.apache.logging.log4j.test.junit.Resources;
 import org.apache.logging.log4j.test.junit.UsingStatusListener;
 import org.apache.logging.log4j.test.junit.UsingTestProperties;
-import org.apache.logging.log4j.util.Unbox;
+import org.apache.logging.log4j.util.internal.Unbox;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.parallel.ResourceLock;
 

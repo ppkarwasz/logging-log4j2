@@ -19,6 +19,7 @@ package org.apache.logging.log4j.util;
 import java.io.Serializable;
 import java.util.Map;
 
+
 /**
  * A read-only collection of String keys mapped to values of arbitrary type.
  *

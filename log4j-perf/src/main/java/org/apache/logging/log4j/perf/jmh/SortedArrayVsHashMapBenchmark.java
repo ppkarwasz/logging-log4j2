@@ -22,8 +22,8 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.perf.nogc.OpenHashStringMap;
-import org.apache.logging.log4j.util.SortedArrayStringMap;
 import org.apache.logging.log4j.util.TriConsumer;
+import org.apache.logging.log4j.util.internal.SortedArrayStringMap;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;

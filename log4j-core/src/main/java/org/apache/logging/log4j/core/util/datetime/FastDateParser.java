@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
 
 import org.apache.logging.log4j.core.util.Integers;
 
-import static org.apache.logging.log4j.util.Strings.toRootUpperCase;
+import static org.apache.logging.log4j.util.internal.Strings.toRootUpperCase;
 
 /**
  * <p>FastDateParser is a fast and thread-safe version of

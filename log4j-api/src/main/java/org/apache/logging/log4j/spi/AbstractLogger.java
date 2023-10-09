@@ -34,14 +34,14 @@ import org.apache.logging.log4j.message.ParameterizedMessageFactory;
 import org.apache.logging.log4j.message.ReusableMessageFactory;
 import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.Constants;
-import org.apache.logging.log4j.util.LambdaUtil;
-import org.apache.logging.log4j.util.LoaderUtil;
 import org.apache.logging.log4j.util.MessageSupplier;
-import org.apache.logging.log4j.util.PerformanceSensitive;
-import org.apache.logging.log4j.util.PropertiesUtil;
-import org.apache.logging.log4j.util.StackLocatorUtil;
 import org.apache.logging.log4j.util.Supplier;
+import org.apache.logging.log4j.util.internal.Constants;
+import org.apache.logging.log4j.util.internal.LambdaUtil;
+import org.apache.logging.log4j.util.internal.LoaderUtil;
+import org.apache.logging.log4j.util.internal.PerformanceSensitive;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
+import org.apache.logging.log4j.util.internal.StackLocatorUtil;
 
 /**
  * Base implementation of a Logger. It is highly recommended that any Logger implementation extend this class.

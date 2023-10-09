@@ -21,6 +21,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.logging.log4j.util.internal.PropertiesPropertySource;
+import org.apache.logging.log4j.util.internal.PropertySource;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 

@@ -19,6 +19,7 @@ package org.apache.logging.log4j.util;
 import java.security.Permission;
 
 import org.apache.logging.log4j.test.junit.SecurityManagerTestRule;
+import org.apache.logging.log4j.util.internal.PropertiesUtil;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.jupiter.api.parallel.ResourceLock;
@@ -59,7 +60,7 @@ public class EnvironmentPropertySourceSecurityManagerIT {
      * rejecting environment variable access in {@link EnvironmentPropertySource}.
      *
      * <pre>
-     * java.lang.NoClassDefFoundError: Could not initialize class org.apache.logging.log4j.util.PropertiesUtil
+     * java.lang.NoClassDefFoundError: Could not initialize class org.apache.logging.log4j.util.internal.PropertiesUtil
      *     at org.apache.logging.log4j.status.StatusLogger.<clinit>(StatusLogger.java:78)
      *     at org.apache.logging.log4j.core.AbstractLifeCycle.<clinit>(AbstractLifeCycle.java:38)
      *     at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)

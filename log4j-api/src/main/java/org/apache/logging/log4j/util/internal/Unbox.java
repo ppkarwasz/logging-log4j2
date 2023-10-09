@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.util;
+package org.apache.logging.log4j.util.internal;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.status.StatusLogger;
@@ -26,7 +26,7 @@ import org.apache.logging.log4j.status.StatusLogger;
  * <p>
  * Example usage:
  * </p><pre>
- * import static org.apache.logging.log4j.util.Unbox.box;
+ * import static org.apache.logging.log4j.util.internal.Unbox.box;
  * ...
  * long longValue = 123456L;
  * double doubleValue = 3.14;

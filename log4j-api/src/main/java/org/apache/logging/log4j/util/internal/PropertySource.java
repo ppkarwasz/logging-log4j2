@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.util;
+package org.apache.logging.log4j.util.internal;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,7 +28,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.apache.logging.log4j.util.Strings.toRootLowerCase;
+import org.apache.logging.log4j.util.BiConsumer;
+
+import static org.apache.logging.log4j.util.internal.Strings.toRootLowerCase;
 
 /**
  * A source for global configuration properties.

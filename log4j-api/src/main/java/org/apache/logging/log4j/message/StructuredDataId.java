@@ -19,7 +19,7 @@ package org.apache.logging.log4j.message;
 import java.io.Serializable;
 
 import org.apache.logging.log4j.util.StringBuilderFormattable;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * The StructuredData identifier.

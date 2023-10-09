@@ -23,7 +23,7 @@ import org.apache.logging.log4j.core.time.Instant;
 import org.apache.logging.log4j.core.time.MutableInstant;
 import org.apache.logging.log4j.core.util.Integers;
 import org.apache.logging.log4j.status.StatusLogger;
-import org.apache.logging.log4j.util.Strings;
+import org.apache.logging.log4j.util.internal.Strings;
 
 /**
  * A JPA 2.1 attribute converter for {@link Instant}s in {@link org.apache.logging.log4j.core.LogEvent}s. This
