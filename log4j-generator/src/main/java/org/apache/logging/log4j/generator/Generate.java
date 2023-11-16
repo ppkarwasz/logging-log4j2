@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.core.tools;
+package org.apache.logging.log4j.generator;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.PrintStream;
@@ -28,19 +28,19 @@ import java.util.List;
  * Usage:
  * <p>
  * To generate source code for an extended logger that adds custom log levels to the existing ones: <br>
- * {@code java org.apache.logging.log4j.core.tools.Generate$ExtendedLogger <logger.class.name> <CUSTOMLEVEL>=<WEIGHT>
+ * {@code java org.apache.logging.log4j.generator.tools.Generate$ExtendedLogger <logger.class.name> <CUSTOMLEVEL>=<WEIGHT>
  * [CUSTOMLEVEL2=WEIGHT2 [CUSTOMLEVEL3=WEIGHT3] ...]}
  * <p>
  * Example of creating an extended logger:<br>
- * {@code java org.apache.logging.log4j.core.tools.Generate$ExtendedLogger com.mycomp.ExtLogger DIAG=350 NOTICE=450
+ * {@code java org.apache.logging.log4j.generator.tools.Generate$ExtendedLogger com.mycomp.ExtLogger DIAG=350 NOTICE=450
  * VERBOSE=550}
  * <p>
  * To generate source code for a custom logger that replaces the existing log levels with custom ones: <br>
- * {@code java org.apache.logging.log4j.core.tools.Generate$CustomLogger <logger.class.name> <CUSTOMLEVEL>=<WEIGHT>
+ * {@code java org.apache.logging.log4j.generator.tools.Generate$CustomLogger <logger.class.name> <CUSTOMLEVEL>=<WEIGHT>
  * [CUSTOMLEVEL2=WEIGHT2 [CUSTOMLEVEL3=WEIGHT3] ...]}
  * <p>
  * Example of creating a custom logger:<br>
- * {@code java org.apache.logging.log4j.core.tools.Generate$CustomLogger com.mycomp.MyLogger DEFCON1=350 DEFCON2=450
+ * {@code java org.apache.logging.log4j.generator.tools.Generate$CustomLogger com.mycomp.MyLogger DEFCON1=350 DEFCON2=450
  * DEFCON3=550}
  */
 public final class Generate {

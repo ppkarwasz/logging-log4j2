@@ -14,17 +14,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.core.tools;
+package org.apache.logging.log4j.generator;
 
 /**
- * Wrapper around {@link Generate.CustomLogger}.
+ * Wrapper around {@link Generate.ExtendedLogger}.
  */
-public class CustomLoggerGenerator {
+public class ExtendedLoggerGenerator {
     /**
-     * Delegates to {@link Generate.CustomLogger#main(String[])}
+     * Delegates to {@link Generate.ExtendedLogger#main(String[])}
      * @param args the command line arguments to pass on
      */
     public static void main(final String[] args) {
-        Generate.CustomLogger.main(args);
+        Generate.ExtendedLogger.main(args);
     }
 }

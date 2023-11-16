@@ -14,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.core.tools;
+package org.apache.logging.log4j.generator;
 
-import org.apache.logging.log4j.core.tools.picocli.CommandLine.Option;
+import org.apache.logging.log4j.generator.picocli.CommandLine.Option;
 
 public class BasicCommandLineArguments {
 
