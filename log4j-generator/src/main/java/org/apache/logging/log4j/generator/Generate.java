@@ -28,8 +28,11 @@ import java.nio.file.Path;
 import java.util.List;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
+import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Option;
+import picocli.CommandLine.ParameterException;
 import picocli.CommandLine.Parameters;
+import picocli.CommandLine.Spec;
 
 /**
  * Generates source code for custom or extended logger wrappers.
@@ -995,23 +998,41 @@ public final class Generate {
     @Option(names = "-f", description = "Output file.")
     private Path outputFile;
 
+    @Spec
+    private CommandSpec spec;
+
     private Generate() {}
 
     private static class LevelInfo {
         final String name;
         final int intLevel;
 
-        LevelInfo(final String description) {
-            final String[] parts = description.split("=");
-            name = parts[0];
-            intLevel = Integer.parseInt(parts[1]);
+        LevelInfo(final String name, final int intLevel) {
+            this.name = name;
+            this.intLevel = intLevel;
         }
     }
 
     public static void main(final String[] args) {
-        new CommandLine(new Generate())
-                .registerConverter(LevelInfo.class, LevelInfo::new)
+        final Generate command = new Generate();
+        new CommandLine(command)
+                .registerConverter(LevelInfo.class, command::convertLevelInfo)
                 .execute(args);
+    }
+
+    private LevelInfo convertLevelInfo(final String value) {
+        final String[] parts = value.split("=", 2);
+        if (parts.length == 2) {
+            try {
+                final int intLevel = Integer.parseInt(parts[1]);
+                return new LevelInfo(parts[0], intLevel);
+            } catch (final NumberFormatException ignored) {
+                // Fall through to throw instruction
+            }
+        }
+        throw new ParameterException(
+                spec.commandLine(),
+                String.format("Invalid level value '%s'; expected form CUSTOMLEVEL=WEIGHT\nE.g. AUDIT=50", value));
     }
 
     private Writer getWriter() throws IOException {
@@ -1027,6 +1048,12 @@ public final class Generate {
         };
     }
 
+    private void validateLevels(final List<LevelInfo> levels) {
+        if (levels == null || levels.isEmpty()) {
+            throw new ParameterException(spec.commandLine(), "At least one level parameter is required");
+        }
+    }
+
     /**
      * Generates source code for extended logger wrappers that provide convenience methods for the specified custom
      * levels.
@@ -1040,6 +1067,7 @@ public final class Generate {
             final @Parameters(description = "Class name to generate") String classNameFQN,
             final @Parameters(description = "Additional log levels") List<LevelInfo> levels)
             throws IOException {
+        validateLevels(levels);
         try (final Writer writer = getWriter()) {
             generateSource(Type.EXTEND, classNameFQN, levels, writer);
             writer.flush();
@@ -1059,6 +1087,7 @@ public final class Generate {
             final @Parameters(description = "Class name to generate") String classNameFQN,
             final @Parameters(description = "Log levels") List<LevelInfo> levels)
             throws IOException {
+        validateLevels(levels);
         try (final Writer writer = getWriter()) {
             generateSource(Type.CUSTOM, classNameFQN, levels, writer);
             writer.flush();
