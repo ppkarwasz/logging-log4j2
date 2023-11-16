@@ -26,10 +26,19 @@
 
   <artifactId>log4j-generator</artifactId>
 
+  <properties>
+    <Main-Class>org.apache.logging.log4j.generator.Generate</Main-Class>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>info.picocli</groupId>
+      <artifactId>picocli</artifactId>
+      <version>4.7.5</version>
     </dependency>
   </dependencies>
 </project>
