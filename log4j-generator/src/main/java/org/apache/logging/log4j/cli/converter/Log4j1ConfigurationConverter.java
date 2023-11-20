@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.log4j.config;
+package org.apache.logging.log4j.cli.converter;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -34,10 +34,9 @@ import org.apache.logging.log4j.core.config.ConfigurationException;
 import org.apache.logging.log4j.core.config.builder.api.ConfigurationBuilder;
 import org.apache.logging.log4j.core.config.builder.impl.BuiltConfiguration;
 import org.apache.logging.log4j.core.config.builder.impl.DefaultConfigurationBuilder;
-import org.apache.logging.log4j.core.tools.BasicCommandLineArguments;
-import org.apache.logging.log4j.core.tools.picocli.CommandLine;
-import org.apache.logging.log4j.core.tools.picocli.CommandLine.Command;
-import org.apache.logging.log4j.core.tools.picocli.CommandLine.Option;
+import picocli.CommandLine;
+import picocli.CommandLine.Command;
+import picocli.CommandLine.Option;
 
 /**
  * Tool for converting a Log4j 1.x properties configuration file to Log4j 2.x XML configuration file.
@@ -51,14 +50,17 @@ import org.apache.logging.log4j.core.tools.picocli.CommandLine.Option;
  * </p>
  *
  * <pre>
- * java org.apache.log4j.config.Log4j1ConfigurationConverter --recurse
+ * java org.apache.logging.log4j.cli.converter.Log4j1ConfigurationConverter --recurse
  * E:\vcs\git\apache\logging\logging-log4j2\log4j-1.2-api\src\test\resources\config-1.2\hadoop --in log4j.properties --verbose
  * </pre>
  */
 public final class Log4j1ConfigurationConverter {
 
     @Command(name = "Log4j1ConfigurationConverter")
-    public static class CommandLineArguments extends BasicCommandLineArguments implements Runnable {
+    public static class CommandLineArguments implements Runnable {
+
+        @Option(names = { "--help", "-h"}, usageHelp = true, description = "Usage help.")
+        private boolean help;
 
         @Option(
                 names = {"--failfast", "-f"},
@@ -85,6 +87,10 @@ public final class Log4j1ConfigurationConverter {
                 description = "Be verbose.")
         private boolean verbose;
 
+        public boolean isHelp() {
+            return help;
+        }
+
         public Path getPathIn() {
             return pathIn;
         }
@@ -103,6 +109,10 @@ public final class Log4j1ConfigurationConverter {
 
         public boolean isVerbose() {
             return verbose;
+        }
+
+        public void setHelp(boolean help) {
+            this.help = help;
         }
 
         public void setFailFast(final boolean failFast) {
