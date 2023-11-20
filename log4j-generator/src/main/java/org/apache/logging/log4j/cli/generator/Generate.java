@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.generator;
+package org.apache.logging.log4j.cli.generator;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -1003,7 +1003,7 @@ public final class Generate {
 
     private Generate() {}
 
-    private static class LevelInfo {
+    public static class LevelInfo {
         final String name;
         final int intLevel;
 

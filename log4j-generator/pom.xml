@@ -27,20 +27,47 @@
   <artifactId>log4j-generator</artifactId>
 
   <properties>
-    <Main-Class>org.apache.logging.log4j.generator.Generate</Main-Class>
+    <Main-Class>org.apache.logging.log4j.cli.generator.Generate</Main-Class>
+
+    <!-- Plugin versions -->
+    <maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
+    <log4j-shade-extensions.version>0.1.0</log4j-shade-extensions.version>
+
+    <!-- Dependencies -->
     <picocli.version>4.7.5</picocli.version>
   </properties>
 
   <dependencies>
+
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
     </dependency>
+
+    <!-- Used by the configuration converter -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>info.picocli</groupId>
       <artifactId>picocli</artifactId>
       <version>${picocli.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -59,15 +86,16 @@
           </annotationProcessorPaths>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.4.1</version>
+        <version>${maven-shade-plugin.version}</version>
         <dependencies>
           <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-transform-maven-shade-plugin-extensions</artifactId>
-            <version>0.1.0</version>
+            <version>${log4j-shade-extensions.version}</version>
           </dependency>
         </dependencies>
         <executions>

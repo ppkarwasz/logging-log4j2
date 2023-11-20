@@ -14,15 +14,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.core.tools;
+package org.apache.logging.log4j.cli.generator;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -36,6 +41,8 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.cli.generator.Generate.LevelInfo;
+import org.apache.logging.log4j.cli.generator.Generate.Type;
 import org.apache.logging.log4j.message.Message;
 import org.apache.logging.log4j.message.MessageFactory;
 import org.apache.logging.log4j.spi.LoggingSystemProperty;
@@ -44,17 +51,21 @@ import org.apache.logging.log4j.util.MessageSupplier;
 import org.apache.logging.log4j.util.Strings;
 import org.apache.logging.log4j.util.Supplier;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junitpioneer.jupiter.SetSystemProperty;
 
 @Tag("functional")
-@SetSystemProperty(
-        key = LoggingSystemProperty.Constant.LOGGER_CONTEXT_FACTORY_CLASS,
-        value = "org.apache.logging.log4j.test.TestLoggerContextFactory")
 public class GenerateCustomLoggerTest {
 
     private static final String TEST_SOURCE = "target/test-classes/org/apache/logging/log4j/core/MyCustomLogger.java";
+
+    @BeforeAll
+    static void beforeClass() {
+        System.setProperty(
+                LoggingSystemProperty.Constant.LOGGER_CONTEXT_FACTORY_CLASS,
+                "org.apache.logging.log4j.test.TestLoggerContextFactory");
+    }
 
     @AfterAll
     public static void afterClass() {
@@ -75,13 +86,12 @@ public class GenerateCustomLoggerTest {
         final String CLASSNAME = "org.apache.logging.log4j.core.MyCustomLogger";
 
         // generate custom logger source
-        final List<String> values = Arrays.asList("DEFCON1=350 DEFCON2=450 DEFCON3=550".split(" "));
-        final List<Generate.LevelInfo> levels = Generate.LevelInfo.parse(values, Generate.CustomLogger.class);
-        final String src = Generate.generateSource(CLASSNAME, levels, Generate.Type.CUSTOM);
-        final File f = new File(TEST_SOURCE);
-        f.getParentFile().mkdirs();
-        try (final FileOutputStream out = new FileOutputStream(f)) {
-            out.write(src.getBytes(Charset.defaultCharset()));
+        final List<LevelInfo> levels = Arrays.asList(
+                new LevelInfo("DEFCON1", 350), new LevelInfo("DEFCON2", 450), new LevelInfo("DEFCON3", 550));
+        final Path testSource = Paths.get(TEST_SOURCE);
+        Files.createDirectories(testSource.getParent());
+        try (final BufferedWriter writer = Files.newBufferedWriter(testSource, UTF_8)) {
+            Generate.generateSource(Type.CUSTOM, CLASSNAME, levels, writer);
         }
 
         // set up compiler
@@ -90,7 +100,7 @@ public class GenerateCustomLoggerTest {
         final List<String> errors = new ArrayList<>();
         try (final StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostics, null, null)) {
             final Iterable<? extends JavaFileObject> compilationUnits =
-                    fileManager.getJavaFileObjectsFromFiles(Collections.singletonList(f));
+                    fileManager.getJavaFileObjectsFromFiles(Collections.singletonList(testSource.toFile()));
             final String classPath = System.getProperty("jdk.module.path");
             final List<String> optionList = new ArrayList<>();
             if (Strings.isNotBlank(classPath)) {
@@ -114,64 +124,62 @@ public class GenerateCustomLoggerTest {
         final Class<?> cls = Class.forName(CLASSNAME);
 
         // check that all factory methods exist and are static
-        assertTrue(Modifier.isStatic(cls.getDeclaredMethod("create").getModifiers()));
-        assertTrue(
-                Modifier.isStatic(cls.getDeclaredMethod("create", Class.class).getModifiers()));
-        assertTrue(
-                Modifier.isStatic(cls.getDeclaredMethod("create", Object.class).getModifiers()));
-        assertTrue(
-                Modifier.isStatic(cls.getDeclaredMethod("create", String.class).getModifiers()));
-        assertTrue(Modifier.isStatic(cls.getDeclaredMethod("create", Class.class, MessageFactory.class)
-                .getModifiers()));
-        assertTrue(Modifier.isStatic(cls.getDeclaredMethod("create", Object.class, MessageFactory.class)
-                .getModifiers()));
-        assertTrue(Modifier.isStatic(cls.getDeclaredMethod("create", String.class, MessageFactory.class)
-                .getModifiers()));
+        assertTrue(Modifier.isStatic(cls.getMethod("create").getModifiers()));
+        assertTrue(Modifier.isStatic(cls.getMethod("create", Class.class).getModifiers()));
+        assertTrue(Modifier.isStatic(cls.getMethod("create", Object.class).getModifiers()));
+        assertTrue(Modifier.isStatic(cls.getMethod("create", String.class).getModifiers()));
+        assertTrue(Modifier.isStatic(
+                cls.getMethod("create", Class.class, MessageFactory.class).getModifiers()));
+        assertTrue(Modifier.isStatic(
+                cls.getMethod("create", Object.class, MessageFactory.class).getModifiers()));
+        assertTrue(Modifier.isStatic(
+                cls.getMethod("create", String.class, MessageFactory.class).getModifiers()));
 
         // check that all log methods exist
         final String[] logMethods = {"defcon1", "defcon2", "defcon3"};
         for (final String name : logMethods) {
             assertDoesNotThrow(() -> {
-                cls.getDeclaredMethod(name, Marker.class, Message.class, Throwable.class);
-                cls.getDeclaredMethod(name, Marker.class, Object.class, Throwable.class);
-                cls.getDeclaredMethod(name, Marker.class, String.class, Throwable.class);
-                cls.getDeclaredMethod(name, Marker.class, Message.class);
-                cls.getDeclaredMethod(name, Marker.class, Object.class);
-                cls.getDeclaredMethod(name, Marker.class, String.class);
-                cls.getDeclaredMethod(name, Message.class);
-                cls.getDeclaredMethod(name, Object.class);
-                cls.getDeclaredMethod(name, String.class);
-                cls.getDeclaredMethod(name, Message.class, Throwable.class);
-                cls.getDeclaredMethod(name, Object.class, Throwable.class);
-                cls.getDeclaredMethod(name, String.class, Throwable.class);
-                cls.getDeclaredMethod(name, String.class, Object[].class);
-                cls.getDeclaredMethod(name, Marker.class, String.class, Object[].class);
+                cls.getMethod(name, Marker.class, Message.class, Throwable.class);
+                cls.getMethod(name, Marker.class, Object.class, Throwable.class);
+                cls.getMethod(name, Marker.class, String.class, Throwable.class);
+                cls.getMethod(name, Marker.class, Message.class);
+                cls.getMethod(name, Marker.class, Object.class);
+                cls.getMethod(name, Marker.class, String.class);
+                cls.getMethod(name, Message.class);
+                cls.getMethod(name, Object.class);
+                cls.getMethod(name, String.class);
+                cls.getMethod(name, Message.class, Throwable.class);
+                cls.getMethod(name, Object.class, Throwable.class);
+                cls.getMethod(name, String.class, Throwable.class);
+                cls.getMethod(name, String.class, Object[].class);
+                cls.getMethod(name, Marker.class, String.class, Object[].class);
 
                 // 2.4 lambda support
-                cls.getDeclaredMethod(name, Marker.class, MessageSupplier.class);
-                cls.getDeclaredMethod(name, Marker.class, MessageSupplier.class, Throwable.class);
-                cls.getDeclaredMethod(name, Marker.class, String.class, Supplier[].class);
-                cls.getDeclaredMethod(name, Marker.class, Supplier.class);
-                cls.getDeclaredMethod(name, Marker.class, Supplier.class, Throwable.class);
-                cls.getDeclaredMethod(name, MessageSupplier.class);
-                cls.getDeclaredMethod(name, MessageSupplier.class, Throwable.class);
-                cls.getDeclaredMethod(name, String.class, Supplier[].class);
-                cls.getDeclaredMethod(name, Supplier.class);
-                cls.getDeclaredMethod(name, Supplier.class, Throwable.class);
+                cls.getMethod(name, Marker.class, MessageSupplier.class);
+                cls.getMethod(name, Marker.class, MessageSupplier.class, Throwable.class);
+                cls.getMethod(name, Marker.class, String.class, Supplier[].class);
+                cls.getMethod(name, Marker.class, Supplier.class);
+                cls.getMethod(name, Marker.class, Supplier.class, Throwable.class);
+                cls.getMethod(name, MessageSupplier.class);
+                cls.getMethod(name, MessageSupplier.class, Throwable.class);
+                cls.getMethod(name, String.class, Supplier[].class);
+                cls.getMethod(name, Supplier.class);
+                cls.getMethod(name, Supplier.class, Throwable.class);
             });
         }
 
         // now see if it actually works...
-        final Method create = cls.getDeclaredMethod("create", String.class);
+        final Method create = cls.getMethod("create", String.class);
         final Object customLogger = create.invoke(null, "X.Y.Z");
         int n = 0;
         for (final String name : logMethods) {
-            final Method method = cls.getDeclaredMethod(name, String.class);
+            final Method method = cls.getMethod(name, String.class);
             method.invoke(customLogger, "This is message " + n++);
         }
 
         final TestLogger underlying = (TestLogger) LogManager.getLogger("X.Y.Z");
         final List<String> lines = underlying.getEntries();
+        assertEquals(logMethods.length, lines.size());
         for (int i = 0; i < lines.size(); i++) {
             assertEquals(" " + levels.get(i).name + " This is message " + i, lines.get(i));
         }
