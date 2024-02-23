@@ -38,7 +38,7 @@ jobs:
 
   build:
     if: github.actor != 'dependabot[bot]'
-    uses: ppkarwasz/logging-log4j2/.github/workflows/build-reusable.yaml@main
+    uses: ppkarwasz/logging-log4j2/.github/workflows/build-reusable.yaml@2.x
     with:
       java-version: |
         8
