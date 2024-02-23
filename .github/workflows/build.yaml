@@ -38,25 +38,14 @@ jobs:
 
   build:
     if: github.actor != 'dependabot[bot]'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Run build
-        uses: apache/logging-parent/.github/workflows/build-reusable.yaml@rel/10.6.0
-        with:
-          java-version: |
-            8
-            17
-          site-enabled: true
-
-      - name: Upload test coverage
-        uses: codecov/codecov-action@0cfda1dd0a4ad9efc75517f399d859cd1ea4ced1 # 4.0.2
-        with:
-          fail_ci_if_error: true
-          slug: copernik-eu/log4j-plugins
-          token: ${{ secrets.CODECOV_TOKEN }}
-          verbose: true
-
+    uses: ppkarwasz/logging-log4j2/.github/workflows/build-reusable.yaml@main
+    with:
+      java-version: |
+        8
+        17
+      site-enabled: true
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   deploy-snapshot:
     needs: build
