@@ -333,6 +333,8 @@
     <maven.site.skip>true</maven.site.skip>
     <maven.site.deploy.skip>true</maven.site.deploy.skip>
 
+    <!-- Maven plugin versions -->
+    <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
   </properties>
 
   <dependencyManagement>
@@ -517,6 +519,18 @@
 
   <build>
 
+    <pluginManagement>
+      <plugins>
+
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>${jacoco-maven-plugin.version}</version>
+        </plugin>
+
+      </plugins>
+    </pluginManagement>
+
     <plugins>
 
       <!-- Enable BOM flattening -->
@@ -532,6 +546,31 @@
             </goals>
             <phase>process-resources</phase>
             <inherited>false</inherited>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <configuration>
+          <includes>
+            <include>org/apache/log4j/**</include>
+            <include>org/apache/logging/log4j/**</include>
+          </includes>
+        </configuration>
+        <executions>
+          <execution>
+            <id>prepare-jacoco-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report-test-coverage</id>
+            <goals>
+              <goal>report</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
