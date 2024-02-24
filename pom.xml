@@ -553,6 +553,12 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
+        <configuration>
+          <includes>
+            <include>org/apache/log4j/**</include>
+            <include>org/apache/logging/log4j/**</include>
+          </includes>
+        </configuration>
         <executions>
           <execution>
             <id>prepare-jacoco-agent</id>

@@ -351,6 +351,24 @@
   <build>
     <plugins>
 
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>report-test-coverage</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>report-aggregate-test-coverage</id>
+            <goals>
+              <goal>report-aggregate</goal>
+            </goals>
+            <phase>verify</phase>
+          </execution>
+        </executions>
+      </plugin>
+
       <!-- Enable Log4j plugin processing -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
