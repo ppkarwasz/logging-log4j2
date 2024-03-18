@@ -16,12 +16,22 @@
  */
 package org.apache.logging.log4j.status;
 
+import static org.apache.logging.log4j.status.StatusLogger.DEFAULT_FALLBACK_LISTENER_LEVEL;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.Arrays;
+import java.util.Properties;
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.message.ParameterizedNoReferenceMessageFactory;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import uk.org.webcompere.systemstubs.SystemStubs;
 
 class StatusLoggerLevelTest {
 
@@ -29,8 +39,8 @@ class StatusLoggerLevelTest {
     void effective_level_should_be_the_least_specific_one() {
 
         // Verify the initial level
-        final StatusLogger logger = StatusLogger.getLogger();
-        final Level fallbackListenerLevel = Level.ERROR;
+        final StatusLogger logger = new StatusLogger();
+        final Level fallbackListenerLevel = DEFAULT_FALLBACK_LISTENER_LEVEL;
         assertThat(logger.getLevel()).isEqualTo(fallbackListenerLevel);
 
         // Register a less specific listener
@@ -81,5 +91,99 @@ class StatusLoggerLevelTest {
         // Remove the last listener
         logger.removeListener(listener1);
         assertThat(logger.getLevel()).isEqualTo(fallbackListenerLevel); // Verify that the level is changed
+    }
+
+    @Test
+    void invalid_level_should_cause_fallback_to_defaults() throws Exception {
+
+        // Create a `StatusLogger` configuration using an invalid level
+        final Properties statusLoggerConfigProperties = new Properties();
+        final String invalidLevelName = "FOO";
+        statusLoggerConfigProperties.put(StatusLogger.DEFAULT_STATUS_LISTENER_LEVEL, invalidLevelName);
+        final StatusLogger.Config[] statusLoggerConfigRef = {null};
+        final String stderr = SystemStubs.tapSystemErr(
+                () -> statusLoggerConfigRef[0] = new StatusLogger.Config(statusLoggerConfigProperties));
+        final StatusLogger.Config statusLoggerConfig = statusLoggerConfigRef[0];
+
+        // Verify the stderr dump
+        assertThat(stderr).contains("Failed reading the level");
+
+        // Verify the level
+        assertThat(statusLoggerConfig.fallbackListenerLevel).isEqualTo(DEFAULT_FALLBACK_LISTENER_LEVEL);
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void debug_mode_should_override_log_filtering(final boolean debugEnabled) {
+
+        // Create a logger with debug enabled
+        final StatusLogger.Config loggerConfig = new StatusLogger.Config(debugEnabled, 0, null);
+        final Level loggerLevel = Level.ERROR;
+        final StatusConsoleListener fallbackListener = mock(StatusConsoleListener.class);
+        when(fallbackListener.getStatusLevel()).thenReturn(loggerLevel);
+        final StatusLogger logger = new StatusLogger(
+                StatusLoggerLevelTest.class.getSimpleName(),
+                ParameterizedNoReferenceMessageFactory.INSTANCE,
+                loggerConfig,
+                fallbackListener);
+
+        // Log at all levels
+        final Level[] levels = Level.values();
+        for (final Level level : levels) {
+            logger.log(level, "test for level `{}`", level);
+        }
+
+        // Calculate the number of expected messages
+        final int expectedMessageCount;
+        if (debugEnabled) {
+            expectedMessageCount = levels.length;
+        } else {
+            expectedMessageCount = (int) Arrays.stream(levels)
+                    .filter(loggerLevel::isLessSpecificThan)
+                    .count();
+        }
+
+        // Verify the fallback listener invocation
+        assertThat(expectedMessageCount).isGreaterThan(0);
+        verify(fallbackListener, times(expectedMessageCount)).log(any());
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void debug_mode_should_override_listener_filtering(final boolean debugEnabled) {
+
+        // Create a logger with debug enabled
+        final StatusLogger.Config loggerConfig = new StatusLogger.Config(debugEnabled, 0, null);
+        final StatusLogger logger = new StatusLogger(
+                StatusLoggerLevelTest.class.getSimpleName(),
+                ParameterizedNoReferenceMessageFactory.INSTANCE,
+                loggerConfig,
+                new StatusConsoleListener(Level.ERROR));
+
+        // Register a listener
+        final Level listenerLevel = Level.INFO;
+        final StatusListener listener = mock(StatusListener.class);
+        when(listener.getStatusLevel()).thenReturn(listenerLevel);
+        logger.registerListener(listener);
+
+        // Log at all levels
+        final Level[] levels = Level.values();
+        for (final Level level : levels) {
+            logger.log(level, "test for level `{}`", level);
+        }
+
+        // Calculate the number of expected messages
+        final int expectedMessageCount;
+        if (debugEnabled) {
+            expectedMessageCount = levels.length;
+        } else {
+            expectedMessageCount = (int) Arrays.stream(levels)
+                    .filter(listenerLevel::isLessSpecificThan)
+                    .count();
+        }
+
+        // Verify the listener invocation
+        assertThat(expectedMessageCount).isGreaterThan(0);
+        verify(listener, times(expectedMessageCount)).log(any());
     }
 }

@@ -23,15 +23,16 @@
 This releases contains ...
 
 
-[#release-notes-2-x-x-changed]
-=== Changed
+[#release-notes-2-x-x-added]
+=== Added
 
-* Improve performance of `CloseableThreadContext#closeMap()` (https://github.com/apache/logging-log4j2/pull/2296[2296])
+* Add a faster `ThreadContextMap` for web app users: `org.apache.logging.log4j.internal.map.StringArrayThreadContextMap`. (https://github.com/apache/logging-log4j2/pull/2330[2330])
 
 [#release-notes-2-x-x-updated]
 === Updated
 
-* Update `co.elastic.clients:elasticsearch-java` to version `8.12.2` (https://github.com/apache/logging-log4j2/pull/2315[2315])
-* Update `com.github.tomakehurst:wiremock-jre8` to version `2.35.2` (https://github.com/apache/logging-log4j2/pull/2306[2306])
-* Update `github/codeql-action` to version `3.24.5` (https://github.com/apache/logging-log4j2/pull/2317[2317])
-* Update `io.fabric8:docker-maven-plugin` to version `0.44.0` (https://github.com/apache/logging-log4j2/pull/2299[2299])
+* Update `actions/checkout` to version `4.1.2` (https://github.com/apache/logging-log4j2/pull/2370[2370])
+* Update `com.fasterxml.jackson:jackson-bom` to version `2.17.0` (https://github.com/apache/logging-log4j2/pull/2372[2372])
+* Update `com.google.guava:guava` to version `33.1.0-jre` (https://github.com/apache/logging-log4j2/pull/2377[2377])
+* Update `org.apache.commons:commons-compress` to version `1.26.1` (https://github.com/apache/logging-log4j2/pull/2361[2361])
+* Update `org.springframework:spring-framework-bom` to version `5.3.33` (https://github.com/apache/logging-log4j2/pull/2378[2378])
