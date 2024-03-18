@@ -82,8 +82,12 @@ public final class ProviderUtil {
     private ProviderUtil() {}
 
     static void addProvider(final Provider provider) {
-        PROVIDERS.add(provider);
-        LOGGER.debug("Loaded Provider {}", provider);
+        if (validVersion(provider.getVersions())) {
+            PROVIDERS.add(provider);
+            LOGGER.debug("Loaded provider:\n{}", provider);
+        } else {
+            LOGGER.warn("Ignoring provider {} for incompatible Log4j API version {}", provider, provider.getVersions());
+        }
     }
 
     /**
@@ -99,11 +103,7 @@ public final class ProviderUtil {
     static void loadProvider(final URL url, final ClassLoader cl) {
         try {
             final Properties props = PropertiesUtil.loadClose(url.openStream(), url);
-            if (validVersion(props.getProperty(API_VERSION))) {
-                final Provider provider = new Provider(props, url, cl);
-                PROVIDERS.add(provider);
-                LOGGER.debug("Loaded Provider {}", provider);
-            }
+            addProvider(new Provider(props, url, cl));
         } catch (final IOException e) {
             LOGGER.error("Unable to open {}", url, e);
         }
@@ -156,8 +156,7 @@ public final class ProviderUtil {
                                         Provider.class,
                                         ServiceLoader.load(Provider.class, ProviderUtil.class.getClassLoader()),
                                         LOGGER)
-                                .filter(provider -> validVersion(provider.getVersions()))
-                                .forEach(PROVIDERS::add);
+                                .forEach(ProviderUtil::addProvider);
 
                         for (final LoaderUtil.UrlResource resource :
                                 LoaderUtil.findUrlResources(PROVIDER_RESOURCE, false)) {
