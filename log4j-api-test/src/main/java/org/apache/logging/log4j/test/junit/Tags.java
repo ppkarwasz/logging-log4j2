@@ -14,16 +14,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j;
-
-import org.apache.logging.log4j.spi.Provider;
-import org.apache.logging.log4j.test.TestLoggerContextFactory;
+package org.apache.logging.log4j.test.junit;
 
 /**
- * Binding for the Log4j API.
+ * A set of tags for JUnit 5 tests.
  */
-public class TestProvider extends Provider {
-    public TestProvider() {
-        super(5, CURRENT_VERSION, TestLoggerContextFactory.class);
-    }
+public final class Tags {
+
+    /**
+     * Marks tests that don't modify the global environment.
+     * <p>
+     *     These tests can safely be run in parallel.
+     * </p>
+     */
+    public static final String PARALLEL = "parallel";
+
+    private Tags() {}
 }
