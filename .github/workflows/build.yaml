@@ -39,4 +39,3 @@ jobs:
       site-enabled: true
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
