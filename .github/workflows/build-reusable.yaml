@@ -80,7 +80,7 @@ jobs:
             site
 
       - name: Upload test coverage
-        uses: codecov/codecov-action@0cfda1dd0a4ad9efc75517f399d859cd1ea4ced1 # 4.0.2
+        uses: codecov/codecov-action@7afa10ed9b269c561c2336fd862446844e0cbf71 # 4.2.0
         with:
           fail_ci_if_error: true
           slug: ppkarwasz/logging-log4j2
