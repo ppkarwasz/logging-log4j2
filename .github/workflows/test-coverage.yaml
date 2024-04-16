@@ -51,7 +51,7 @@ jobs:
             -DinstallAtEnd=true \
             -P!java8-tests \
             -Pcoverage \
-            clean verify
+            clean install
 
       - name: Upload test coverage
         uses: codecov/codecov-action@0cfda1dd0a4ad9efc75517f399d859cd1ea4ced1 # 4.0.2
