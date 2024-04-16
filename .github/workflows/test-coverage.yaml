@@ -57,3 +57,4 @@ jobs:
         uses: codecov/codecov-action@0cfda1dd0a4ad9efc75517f399d859cd1ea4ced1 # 4.0.2
         with:
           fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
