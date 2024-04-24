@@ -19,21 +19,33 @@ name: 'Check labels'
 on:
   issue_comment:
     types: [created]
+  issues:
+    types: [opened]
+env:
+  user_type: ${{ contains(fromJSON('["COLLABORATOR","MEMBER","OWNER"]'), github.event.comment.author_association) && 'maintainer' || 'user' }}
+  is_issue: ${{ !github.event.issue.pull_request }}
 
 permissions:
   issues: write
 
 jobs:
   check-labels:
-    if: ${{ !github.event.issue.pull_request }}
+    if: ${{ env.is_issue }}
     runs-on: ubuntu-latest
 
     steps:
-     - name: Remove `waiting-for-user` label
-       if: ${{ !contains(fromJSON('["COLLABORATOR","MEMBER","OWNER"]'), github.event.comment.author_association) }}
+     - name: Add `waiting-for-maintainer` label
+       if: ${{ github.event_type == 'issues' || env.user_type == 'user' }
        env:
          ISSUE: ${{ github.event.issue.html_url }}
          GH_TOKEN: ${{ github.token }}
        run: |
-         gh issue edit $ISSUE --add-label 'waiting-for-maintainer' --remove-label 'waiting-for-user'
+         gh issue edit $ISSUE --add-label 'waiting-for-maintainer'
 
+     - name: Remove `waiting-for-user` label
+       if: ${{ env.user_type == 'user' }}
+       env:
+         ISSUE: ${{ github.event.issue.html_url }}
+         GH_TOKEN: ${{ github.token }}
+       run: |
+         gh issue edit $ISSUE --remove-label 'waiting-for-user'
