@@ -60,13 +60,13 @@
     <!-- =====================================================
          Direct dependency version properties (in alphabetical order)
          ===================================================== -->
-    <activemq.version>6.1.1</activemq.version>
+    <activemq.version>6.1.2</activemq.version>
     <angus-activation.version>2.0.2</angus-activation.version>
     <angus-mail.version>2.0.3</angus-mail.version>
     <assertj.version>3.25.3</assertj.version>
     <awaitility.version>4.2.1</awaitility.version>
     <bsh.version>2.0b6</bsh.version>
-    <cassandra.version>3.11.16</cassandra.version>
+    <cassandra.version>3.11.17</cassandra.version>
     <cassandra-driver.version>3.11.5</cassandra-driver.version>
     <commons-codec.version>1.16.1</commons-codec.version>
     <commons-compress.version>1.26.1</commons-compress.version>
@@ -127,7 +127,7 @@
     <maven.version>3.9.6</maven.version>
     <mockito.version>4.11.0</mockito.version>
     <nashorn.version>15.4</nashorn.version>
-    <netty.version>4.1.108.Final</netty.version>
+    <netty.version>4.1.109.Final</netty.version>
     <org.eclipse.osgi.version>3.13.0.v20180226-1711</org.eclipse.osgi.version>
     <org.eclipse.persistence.version>2.7.14</org.eclipse.persistence.version>
     <oro.version>2.0.8</oro.version>
