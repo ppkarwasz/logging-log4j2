@@ -23,19 +23,18 @@ on:
     types: [opened]
 env:
   user_type: ${{ contains(fromJSON('["COLLABORATOR","MEMBER","OWNER"]'), github.event.comment.author_association) && 'maintainer' || 'user' }}
-  is_issue: ${{ !github.event.issue.pull_request }}
 
 permissions:
   issues: write
 
 jobs:
   check-labels:
-    if: ${{ env.is_issue }}
+    if: ${{ ! github.event.issue.pull_request }}
     runs-on: ubuntu-latest
 
     steps:
      - name: Add `waiting-for-maintainer` label
-       if: ${{ github.event_type == 'issues' || env.user_type == 'user' }}
+       if: github.event_type == 'issues' || env.user_type == 'user'
        env:
          ISSUE: ${{ github.event.issue.html_url }}
          GH_TOKEN: ${{ github.token }}
@@ -43,7 +42,7 @@ jobs:
          gh issue edit $ISSUE --add-label 'waiting-for-maintainer'
 
      - name: Remove `waiting-for-user` label
-       if: ${{ env.user_type == 'user' }}
+       if: env.user_type == 'user'
        env:
          ISSUE: ${{ github.event.issue.html_url }}
          GH_TOKEN: ${{ github.token }}
