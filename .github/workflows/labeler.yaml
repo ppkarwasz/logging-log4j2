@@ -35,7 +35,7 @@ jobs:
 
     steps:
      - name: Add `waiting-for-maintainer` label
-       if: ${{ github.event_type == 'issues' || env.user_type == 'user' }
+       if: ${{ github.event_type == 'issues' || env.user_type == 'user' }}
        env:
          ISSUE: ${{ github.event.issue.html_url }}
          GH_TOKEN: ${{ github.token }}
