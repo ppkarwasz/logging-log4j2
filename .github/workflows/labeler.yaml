@@ -32,8 +32,8 @@ jobs:
      - name: Remove `waiting-for-user` label
        if: ${{ !contains(fromJSON('["COLLABORATOR","MEMBER","OWNER"]'), github.event.comment.author_association) }}
        env:
-         ISSUE_NUMBER: ${{ github.event.issue.number }}
+         ISSUE: ${{ github.event.issue.html_url }}
          GH_TOKEN: ${{ github.token }}
        run: |
-         gh issue edit $ISSUE_NUMBER --add-label 'waiting-for-maintainer' --remove-label 'waiting-for-user'
+         gh issue edit $ISSUE --add-label 'waiting-for-maintainer' --remove-label 'waiting-for-user'
 
