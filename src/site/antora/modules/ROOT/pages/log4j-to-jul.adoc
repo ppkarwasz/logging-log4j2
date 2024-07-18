@@ -14,21 +14,25 @@ Licensed to the Apache Software Foundation (ASF) under one or more
     See the License for the specific language governing permissions and
     limitations under the License.
 ////
-= Log4j to JUL Adapter
+= Log4j-to-JUL bridge
 
-The Log4j 2 to JUL Adapter allows applications coded to the Log4j 2 API to be routed to `java.util.logging` (JUL).
+The Log4j-to-JUL bridge provides components that allow application and library that use the Log4j API
+to log to
+https://docs.oracle.com/javase/8/docs/api/java/util/logging/Logger.html[`java.util.logging.Logger`]
+(JUL) instead.
 
-Use of this adapter may cause some loss of performance as the Log4j 2 Messages must be formatted before they can be passed to JUL.
-With Log4j 2 as the implementation these would normally be formatted only when they are accessed by a Filter or Appender.
+[IMPORTANT]
+====
+This chapter covers the implementation details of the Log4j-to-JUL bridge.
+For the installation procedure and basic usage see
+xref:manual/installation.adoc#impl-jul[Installing JUL]
+section of our
+xref:manual/installation.adoc[Installation guide].
+====
 
-== Requirements
+[#level-conversion]
+== Level conversion
 
-The Log4j 2 to JUL adapter is dependent on the Log4j 2 API.
-For more information, see xref:runtime-dependencies.adoc[Runtime Dependencies].
+The current Log4j-to-JUL implementation does not use custom JUL levels and converts Log4j levels to JUL according to the following table:
 
-== Usage
-
-Include this JAR.
-Configure JUL as usual.
-
-Use of the JUL adapter (log4j-to-jul-2.x.jar) together with the JUL bridge (log4j-jul-2.x.jar) should never be attempted as it will cause events to endlessly be routed between SLF4J and JUL.
+include::partial$manual/levels-log4j-to-jul.adoc[]

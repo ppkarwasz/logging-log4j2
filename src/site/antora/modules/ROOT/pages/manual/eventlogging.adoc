@@ -14,125 +14,39 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 ////
-= Event Logging
 
-The `EventLogger` class provides a simple mechanism for logging events
-that occur in an application. While the `EventLogger` is useful as a way
-of initiating events that should be processed by an audit Logging
-system, by itself it does not implement any of the features an audit
-logging system would require such as guaranteed delivery.
+= Event Logger
 
-The recommended way of using the `EventLogger` in a typical web
-application is to populate the `ThreadContext` Map with data that is
-related to the entire lifespan of the request such as the user's id, the
-user's IP address, the product name, etc. This can easily be done in a
-servlet filter where the `ThreadContext` Map can also be cleared at the
-end of the request. When an event that needs to be recorded occurs a
-`StructuredDataMessage` should be created and populated. Then call
-`EventLogger.logEvent(msg)` where msg is a reference to the
-`StructuredDataMessage`.
+link:../javadoc/log4j-api/org/apache/logging/log4j/EventLogger.html[`EventLogger`] is a convenience to log xref:manual/messages.adoc#StructuredDataMessage[`StructuredDataMessage`]s, which format their content in a way compliant with https://datatracker.ietf.org/doc/html/rfc5424#section-6[the Syslog message format described in RFC 5424].
+Historically, `EventLogger` was added to help users migrate from SLF4J `EventLogger`, which was removed in https://www.slf4j.org/news.html#1.7.26[SLF4J version `1.7.26`].
 
-[source,java]
-----
-import org.apache.logging.log4j.ThreadContext;
-import org.apache.commons.lang.time.DateUtils;
+[WARNING]
+====
+*Event Logger is deprecated for removal!*
+We advise users to switch to plain `Logger` instead.
+Refer to xref:manual/api.adoc[] on how to use `Logger`.
+====
 
-import javax.servlet.Filter;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.FilterChain;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.TimeZone;
+Compared to using link:../javadoc/log4j-api/org/apache/logging/log4j/Logger.html[a plain `Logger`], `EventLogger`
 
-public class RequestFilter implements Filter {
-    private FilterConfig filterConfig;
-    private static String TZ_NAME = "timezoneOffset";
+* attaches an `EVENT` xref:manual/markers.adoc[marker], and
+* sets the xref:manual/customloglevels.adoc[level] to `OFF`, unless one is explicitly provided.
 
-    public void init(FilterConfig filterConfig) throws ServletException {
-        this.filterConfig = filterConfig;
-    }
-
-    /**
-     * Sample filter that populates the MDC on every request.
-     */
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
-            throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest)servletRequest;
-        HttpServletResponse response = (HttpServletResponse)servletResponse;
-        ThreadContext.put("ipAddress", request.getRemoteAddr());
-        HttpSession session = request.getSession(false);
-        TimeZone timeZone = null;
-        if (session != null) {
-            // Something should set this after authentication completes
-            String loginId = (String)session.getAttribute("LoginId");
-            if (loginId != null) {
-                ThreadContext.put("loginId", loginId);
-            }
-            // This assumes there is some javascript on the user's page to create the cookie.
-            if (session.getAttribute(TZ_NAME) == null) {
-                if (request.getCookies() != null) {
-                    for (Cookie cookie : request.getCookies()) {
-                        if (TZ_NAME.equals(cookie.getName())) {
-                            int tzOffsetMinutes = Integer.parseInt(cookie.getValue());
-                            timeZone = TimeZone.getTimeZone("GMT");
-                            timeZone.setRawOffset((int)(tzOffsetMinutes * DateUtils.MILLIS_PER_MINUTE));
-                            request.getSession().setAttribute(TZ_NAME, tzOffsetMinutes);
-                            cookie.setMaxAge(0);
-                            response.addCookie(cookie);
-                        }
-                    }
-                }
-            }
-        }
-        ThreadContext.put("hostname", servletRequest.getServerName());
-        ThreadContext.put("productName", filterConfig.getInitParameter("ProductName"));
-        ThreadContext.put("locale", servletRequest.getLocale().getDisplayName());
-        if (timeZone == null) {
-            timeZone = TimeZone.getDefault();
-        }
-        ThreadContext.put("timezone", timeZone.getDisplayName());
-        filterChain.doFilter(servletRequest, servletResponse);
-        ThreadContext.clear();
-    }
-
-    public void destroy() {
-    }
-}
-----
-
-Sample class that uses `EventLogger`.
+That is, following `EventLogger` usages:
 
 [source,java]
 ----
-import org.apache.logging.log4j.StructuredDataMessage;
-import org.apache.logging.log4j.EventLogger;
-
-import java.util.Date;
-import java.util.UUID;
-
-public class MyApp {
-
-    public String doFundsTransfer(Account toAccount, Account fromAccount, long amount) {
-        toAccount.deposit(amount);
-        fromAccount.withdraw(amount);
-        String confirm = UUID.randomUUID().toString();
-        StructuredDataMessage msg = new StructuredDataMessage(confirm, null, "transfer");
-        msg.put("toAccount", toAccount);
-        msg.put("fromAccount", fromAccount);
-        msg.put("amount", amount);
-        EventLogger.logEvent(msg);
-        return confirm;
-    }
-}
+EventLogger.logEvent(new StructuredDataMessage(...));
+EventLogger.logEvent(new StructuredDataMessage(...), Level.INFO);
 ----
 
-The `EventLogger` class uses a `Logger` named "EventLogger". `EventLogger`
-uses a logging level of OFF as the default to indicate that it cannot be
-filtered. These events can be formatted for printing using the
-link:../javadoc/log4j-core/org/apache/logging/log4j/core/layout/StructuredDataLayout.html[`StructuredDataLayout`].
+are equivalent to the following plain `Logger` usages:
+
+[source,java]
+----
+private static final Marker EVENT_MARKER = MarkerManager.getMarker("EVENT");
+private static final Logger LOGGER = LogManager.getLogger();
+
+LOGGER.log(Level.OFF, EVENT_MARKER, new StructuredDataMessage(...));
+LOGGER.info(EVENT_MARKER, new StructuredDataMessage(...));
+----

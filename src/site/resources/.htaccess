@@ -17,6 +17,60 @@
 # under the License.
 #
 RewriteEngine On
-RewriteRule "^(/log4j/[23].x)/log4j-(core|api)/apidocs(.*)" "$1/javadoc/$2$3" [R=permanent]
-RewriteRule "^(/log4j/[23].x)/manual/scala-api.html" "/log4j/scala" [R=permanent]
-RewriteRule "^(/log4j/[23].x)/release-notes/index.html" "$1/release-notes.html" [R=permanent]
+RewriteBase "/log4j/2.x/"
+
+##
+# To simplify the redirection rules, we normalized them:
+#
+# 1. If the request URIs ends in `/` (necessarily a `path-info`), we add `index.html` to it:
+RewriteRule "^(.*)/$" "$1/index.html" [DPI]
+# 2. If the request URI points to a (non-existent) file, we try adding `.html`:
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $1 "!\.html$"
+RewriteRule "^(.+)$" "$1.html"
+#
+# From this point rules match against the URI to the real file, with "/log4j/2.x/" stripped.
+
+# The content moved between pages
+RewriteRule "^articles\.html$" "manual/index.html" [R=permanent]
+RewriteRule "^log4j-1\.2-api(/index)?\.html$" "manual/migration.html" [R=permanent]
+RewriteRule "^log4j-api/apidocs(.*)$" "javadoc/log4j-api$1" [R=permanent]
+RewriteRule "^log4j-api(/index)?\.html$" "manual/api.html" [R=permanent]
+RewriteRule "^log4j-appserver(/index)\.html$" "manual/webapp.html#replace" [R=permanent,NE]
+RewriteRule "^log4j-core/apidocs(.*)$" "javadoc/log4j-core$1" [R=permanent]
+RewriteRule "^log4j(-jakarta)?-web(/index)?\.html$" "manual/webapp.html" [R=permanent]
+RewriteRule "^log4j-jcl(/index)?\.html$" "manual/installation.html#impl-core-bridge-jcl" [R=permanent,NE]
+RewriteRule "^log4j-jmx-gui(/index)?\.html$" "/log4j/jmx-gui/latest/index.html" [R=permanent]
+RewriteRule "^log4j-jpl(/index)?\.html$" "manual/installation.html#impl-core-bridge-jpl" [R=permanent,NE]
+RewriteRule "^log4j-kubernetes(/index)?\.html$" "https://github.com/fabric8io/kubernetes-client/blob/main/doc/KubernetesLog4j.md" [R=permanent]
+RewriteRule "^log4j-mongodb3(/index)?\.html$" "manual/appenders.html#NoSQLAppenderMongoDB" [R=permanent,NE]
+RewriteRule "^log4j-mongodb4(/index)?\.html$" "manual/appenders.html#log4j-mongodb4" [R=permanent,NE]
+RewriteRule "^log4j-slf4j2?-impl(/index)?\.html$" "manual/installation.html#impl-core-bridge-slf4j" [R=permanent,NE]
+RewriteRule "^log4j-taglib(/index)?\.html$" "manual/webapp.html#log4j-taglib" [R=permanent,NE]
+RewriteRule "^manual/api-separation\.html$" "manual/api.html" [R=permanent]
+RewriteRule "^manual/cloud\.html$" "soa.html" [R=permanent]
+RewriteRule "^manual/logsep\.html$" "jakarta.html#log-separation" [R=permanent,NE]
+RewriteRule "^manual/migration\.html$" "migrate-from-log4j1.html" [R=permanent]
+RewriteRule "^manual/scala-api\.html$" "/log4j/scala/latest/index.html" [R=permanent]
+RewriteRule "^manual/usage\.html$" "manual/api.html" [R=permanent]
+RewriteRule "^manual/webapp\.html$" "jakarta.html" [R=permanent]
+RewriteRule "^runtime-dependencies\.html$" "manual/installation.html" [R=permanent]
+RewriteRule "^thanks\.html$" "/support.html#sponsors" [R=permanent,NE]
+
+# These redirects are special, since:
+#
+# 1. `mod_negotiate` is active and it is applied before `mod_rewrite`,
+# 2. we replaced a directory like `log4j-api/` with a file that has the same prefix like `log4j-api.html`,
+#
+# if the URI path is `/log4j/2.x/log4j-api/foo` we must match `log4j-api.html/foo`.
+RewriteRule "^log4j-cassandra\.html/index\.html$" "log4j-cassandra.html" [R=permanent]
+RewriteRule "^log4j-couchdb\.html/index\.html$" "log4j-couchdb.html" [R=permanent]
+RewriteRule "^log4j-docker\.html/index\.html$" "log4j-docker.html" [R=permanent]
+RewriteRule "^log4j-flume-ng\.html/index\.html$" "log4j-flume-ng.html" [R=permanent]
+RewriteRule "^log4j-iostreams\.html/index\.html$" "log4j-iostreams.html" [R=permanent]
+RewriteRule "^log4j-jul\.html/index\.html$" "log4j-jul.html" [R=permanent,NE]
+RewriteRule "^log4j-spring-boot\.html/index\.html$" "log4j-spring-boot.html" [R=permanent]
+RewriteRule "^log4j-spring-cloud-config\.html/index\.html$" "log4j-spring-cloud-config.html" [R=permanent]
+RewriteRule "^log4j-spring-cloud-config-client\.html/index\.html$" "log4j-spring-cloud-config-client.html" [R=permanent]
+RewriteRule "^log4j-to-jul\.html/index\.html$" "log4j-to-jul.html" [R=permanent]
+RewriteRule "^release-notes\.html/index\.html$" "release-notes.html" [R=permanent]

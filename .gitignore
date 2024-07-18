@@ -16,8 +16,10 @@
 .project
 .idea
 **/*.iml
+.vscode
 /.metadata/
 /.mvn/wrapper/maven-wrapper.jar
+/.mvn/.develocity
 .flattened-pom.xml
 .project
 .settings

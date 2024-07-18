@@ -32,6 +32,7 @@
   <description>The Apache Log4j Implementation Tests</description>
 
   <properties>
+    <log4j.docgen.skip>true</log4j.docgen.skip>
     <!-- Ignore less important (high rank) bugs for test artifacts -->
     <spotbugs.maxRank>9</spotbugs.maxRank>
 
@@ -299,17 +300,6 @@
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-junit-jupiter</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.felix</groupId>
-      <artifactId>org.apache.felix.framework</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <!-- OSGi tests -->
-    <dependency>
-      <groupId>org.eclipse.tycho</groupId>
-      <artifactId>org.eclipse.osgi</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>

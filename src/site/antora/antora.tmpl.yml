@@ -39,14 +39,21 @@ start_page: index.adoc
 asciidoc:
   attributes:
     # Commons
-    project-github-url: "${scm.url}"
+    antora-examples-url: "${scm.url}/tree/${scm.tag}/src/site/antora/modules/ROOT/examples"
+    project-github-url: "${scm.url}/tree/${scm.tag}"
     project-name: "Log4j"
     project-id: "log4j"
     java-target-version: "${maven.compiler.target}"
     java-compiler-version: "${minimalJavaBuildVersion}"
+    log4j-kubernetes-url: "https://github.com/fabric8io/kubernetes-client/blob/main/doc/KubernetesLog4j.md"
+    logback-url: "https://logback.qos.ch"
     logging-services-url: "https://logging.apache.org"
+    lmax-disruptor-url: "https://lmax-exchange.github.io/disruptor"
+    slf4j-url: "https://www.slf4j.org"
     # Dependency versions
+    commons-csv-version: "${site-commons-csv.version}"
     commons-logging-version: "${site-commons-logging.version}"
+    disruptor-version: "${site-disruptor.version}"
     jackson-version: "${site-jackson.version}"
     log4j-api-version: "${log4j-api.version}"
     log4j-core-version: "${site-log4j-core.version}"
