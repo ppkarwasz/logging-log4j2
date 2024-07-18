@@ -38,6 +38,7 @@ jobs:
       java-version: |
         8
         17
+      develocity-enabled: true
       site-enabled: true
       reproducibility-check-enabled: false
 
