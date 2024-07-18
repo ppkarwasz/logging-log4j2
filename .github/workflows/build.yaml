@@ -41,4 +41,3 @@ jobs:
       develocity-enabled: true
       site-enabled: true
       reproducibility-check-enabled: false
-
