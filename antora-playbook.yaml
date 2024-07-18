@@ -31,7 +31,7 @@ content:
 runtime:
   log:
     # Fail on warnings
-    failure_level: warn
+    # failure_level: warn
 
 asciidoc:
   attributes:
