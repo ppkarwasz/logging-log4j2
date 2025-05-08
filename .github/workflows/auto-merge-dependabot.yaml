@@ -26,7 +26,6 @@ permissions: read-all
 
 jobs:
 
-
   merge-dependabot:
     runs-on: ubuntu-latest
     permissions:
