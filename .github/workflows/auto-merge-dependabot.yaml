@@ -58,5 +58,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - run: "echo 'latest release: ${{ steps.pr.outputs.data }}'"
-      - run: "echo 'event: ${{ toJSON(github.event) }}'"
+      - name: Fetch Dependabot metadata
+        id: dependabot
+        uses: dependabot/fetch-metadata@d7267f607e9d3fb96fc2fbe83e0af444713e90b7   # 2.3.0
+
+      - run: |
+          echo 'Pull Request: ${{ steps.pr.outputs.data }}'
+          echo 'Dependabot: ${{ steps.dependabot-metadata.outputs.updated-dependencies-json }}'
