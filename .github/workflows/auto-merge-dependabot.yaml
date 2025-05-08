@@ -38,7 +38,7 @@ jobs:
         id: pr
         with:
           query: |
-            query { 
+            query {
               repository(owner:$owner,name:$name) {
                 object(oid:$ref) {
                   ... on Commit {
