@@ -38,9 +38,9 @@ jobs:
         id: pr
         with:
           query: |
-            query {
-              repository(owner:$owner,name:$name) {
-                object(oid:$ref) {
+            query($owner:String!, repo:String!, sha:String!) {
+              repository(owner:$owner,name:$repo) {
+                object(oid:$sha) {
                   ... on Commit {
                     associatedPullRequests(first:1) {
                       nodes {
@@ -54,7 +54,7 @@ jobs:
             }
           owner: ${{ github.event.repository.owner.name }}
           repo: ${{ github.event.repository.name }}
-          ref: ${{ github.ref }}
+          sha: ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
