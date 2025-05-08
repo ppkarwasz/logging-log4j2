@@ -55,5 +55,7 @@ jobs:
           owner: ${{ github.event.repository.owner.name }}
           repo: ${{ github.event.repository.name }}
           ref: ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - run: "echo 'latest release: ${{ steps.pr.outputs.data }}'"
