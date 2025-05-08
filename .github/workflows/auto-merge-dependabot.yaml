@@ -59,3 +59,4 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
       - run: "echo 'latest release: ${{ steps.pr.outputs.data }}'"
+      - run: "echo 'event: ${{ github.event }}''"
