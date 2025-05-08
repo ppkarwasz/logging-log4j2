@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-name: merge-dependabot
+name: auto-merge-dependabot
 
 on:
   pull_request_target:
