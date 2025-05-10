@@ -22,7 +22,8 @@ on:
     branches:
       - 'dependabot/**'
 
-permissions: read-all
+permissions:
+  pull-requests: write
 
 jobs:
 
@@ -60,9 +61,10 @@ jobs:
           git push origin
 
       - name: Enable auto-merge on PR
-        if: ${{ steps.dependencies.outputs.pull-request-html-url && steps.dependencies.outputs.pull-request-html-url }}
+        if: ${{ steps.dependencies.outputs.dependency-count > 0 && steps.dependencies.outputs.pull-request-html-url }}
         shell: bash
         env:
           PR_HTML_URL: ${{ steps.dependencies.outputs.pull-request-html-url }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh pr merge --auto "$PR_HTML_URL"
