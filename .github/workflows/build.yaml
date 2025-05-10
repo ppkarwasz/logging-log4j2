@@ -33,9 +33,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Just say hello!
+      - name: Just print some data
+        env:
+          ACTOR: ${{ github.actor }}
+          SENDER: ${{ toJSON(github.event.sender) }}
+          PR_USER: ${{ toJSON(github.event.pull_request.user) }}
         run: |
-          echo "Hello GitHub Actions!"
+          echo "Actor: $ACTOR"
+          echo "Sender: $SENDER"
+          echo "User: $PR_USER"
 
   deploy-snapshot:
     needs: build
