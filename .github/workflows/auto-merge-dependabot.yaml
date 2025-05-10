@@ -58,3 +58,11 @@ jobs:
           git config user.email private@logging.apache.org
           git commit -m "$COMMIT_MSG"
           git push origin
+
+      - name: Enable auto-merge on PR
+        if: ${{ steps.dependencies.outputs.pull-request-html-url && steps.dependencies.outputs.pull-request-html-url }}
+        shell: bash
+        env:
+          PR_HTML_URL: ${{ steps.dependencies.outputs.pull-request-html-url }}
+        run: |
+          gh pr merge --auto "$PR_HTML_URL"
