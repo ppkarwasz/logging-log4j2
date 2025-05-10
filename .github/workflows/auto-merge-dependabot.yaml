@@ -59,5 +59,7 @@ jobs:
 
       - name: Dispatch required workflows
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh workflow run build
