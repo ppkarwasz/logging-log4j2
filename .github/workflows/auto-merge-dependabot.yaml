@@ -35,6 +35,8 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683   # 4.2.2
+        with:
+          token: ${{ secrets.DEPENDABOT_TOKEN }}
 
       - name: Generate changelog entries
         id: dependencies
@@ -56,10 +58,3 @@ jobs:
           git config user.email private@logging.apache.org
           git commit -m "$COMMIT_MSG"
           git push origin
-
-      - name: Dispatch required workflows
-        shell: bash
-        env:
-          GH_TOKEN: ${{ secrets.DEPENDABOT_TOKEN }}
-        run: |
-          gh workflow run build
