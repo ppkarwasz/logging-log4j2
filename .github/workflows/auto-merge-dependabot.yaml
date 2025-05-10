@@ -33,27 +33,27 @@ jobs:
       contents: write
 
     steps:
-      - name: Fetch Pull Request metadata
-        uses: octokit/graphql-action@v2.x
-        id: pr
-        with:
-          query: |
-            query {
-              repository(owner:$owner,name:$name) {
-                object(oid:$ref) {
-                  ... on Commit {
-                    associatedPullRequests(first:1) {
-                      nodes {
-                        number
-                        url
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          owner: ${{ github.event.repository.owner.name }}
-          repo: ${{ github.event.repository.name }}
-          ref: ${{ github.ref }}
 
-      - run: "echo 'latest release: ${{ steps.pr.outputs.data }}'"
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683   # 4.2.2
+
+      - name: Generate changelog entries
+        id: dependencies
+        uses: ppkarwasz/logging-actions@main
+
+      - name: Add & commit changes
+        if: ${{ steps.dependencies.outputs.dependency-count > 0 }}
+        shell: bash
+        env:
+          COMMIT_MSG: >
+            Generate changelog entries
+            ${{ steps.dependencies.outputs.pull-request-number 
+              && format('PR #{0}', steps.dependencies.outputs.pull-request-number)
+              || format('commit {0}', github.sha)
+            }}
+        run: |
+          git add src/changelog
+          git config user.name "ASF Logging Services RM"
+          git config user.email private@logging.apache.org
+          git commit -m "$COMMIT_MSG"
+          git push origin
