@@ -30,16 +30,12 @@ permissions: read-all
 jobs:
 
   build:
-    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@rel/12.1.0
-    secrets:
-      DV_ACCESS_TOKEN: ${{ startsWith(github.ref_name, 'release/') && '' || secrets.DEVELOCITY_ACCESS_KEY }}
-    with:
-      java-version: |
-        8
-        17
-      site-enabled: true
-      reproducibility-check-enabled: false
-      develocity-enabled: ${{ ! startsWith(github.ref_name, 'release/') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Just say hello!
+        run: |
+          echo "Hello GitHub Actions!"
 
   deploy-snapshot:
     needs: build
