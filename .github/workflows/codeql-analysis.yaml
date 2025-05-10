@@ -18,12 +18,7 @@
 name: codeql-analysis
 
 on:
-  push:
-    branches: [ "2.x", "main" ]
-  pull_request:
-    branches: [ "2.x", "main" ]
-  schedule:
-    - cron: '32 12 * * 5'
+  workflow_dispatch:
 
 permissions: read-all
 
