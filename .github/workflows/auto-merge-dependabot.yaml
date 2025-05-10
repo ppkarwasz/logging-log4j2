@@ -27,7 +27,6 @@ permissions: read-all
 jobs:
 
   merge-dependabot:
-    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write
