@@ -60,6 +60,6 @@ jobs:
       - name: Dispatch required workflows
         shell: bash
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.DEPENDABOT_TOKEN }}
         run: |
           gh workflow run build
