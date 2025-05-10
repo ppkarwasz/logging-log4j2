@@ -45,8 +45,8 @@ jobs:
         shell: bash
         env:
           COMMIT_MSG: >
-            Generate changelog entries
-            ${{ steps.dependencies.outputs.pull-request-number 
+            Generate changelog entries for
+            ${{ steps.dependencies.outputs.pull-request-number
               && format('PR #{0}', steps.dependencies.outputs.pull-request-number)
               || format('commit {0}', github.sha)
             }}
