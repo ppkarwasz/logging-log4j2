@@ -39,3 +39,5 @@ jobs:
       CONTENT_WRITE_TOKEN: ${{ secrets.DEPENDABOT_TOKEN }}
       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+    with:
+      reusable_ref: feat/dependabot-add-changelog
