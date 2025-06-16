@@ -31,10 +31,10 @@ jobs:
   process-dependabot:
     # Skip this workflow on commits not pushed by Dependabot
     if: ${{ github.actor == 'dependabot[bot]' }}
-    uses: apache/logging-parents/.github/workflows/process-dependabot-reusable.yaml@feat/dependabot-add-changelog
+    uses: apache/logging-parent/.github/workflows/process-dependabot-reusable.yaml@feat/dependabot-add-changelog
     permissions:
       contents: write
     secrets:
-      AUTO_MERGE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      AUTO_MERGE_TOKEN: ${{ github.token }}
       CONTENT_WRITE_TOKEN: ${{ secrets.DEPENDABOT_TOKEN }}
       GPG_SECRET_KEY: ${{ secrets.GPG_SECRET_KEY }}
