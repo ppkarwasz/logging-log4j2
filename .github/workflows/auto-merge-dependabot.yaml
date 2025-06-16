@@ -40,4 +40,6 @@ jobs:
       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
     with:
+      user_name: 'Release Manager'
+      user_email: bot@copernik.eu
       reusable_ref: feat/dependabot-add-changelog
