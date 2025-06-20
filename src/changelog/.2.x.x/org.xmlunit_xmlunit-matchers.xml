@@ -2,6 +2,6 @@
 <entry xmlns="https://logging.apache.org/xml/ns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="https://logging.apache.org/xml/ns https://logging.apache.org/xml/ns/log4j-changelog-0.xsd"
   type="updated">
-  <issue id="552" link="https://github.com/ppkarwasz/logging-log4j2/pull/552"/>
-  <description format="asciidoc">Updated dependency org.xmlunit:xmlunit-matchers to version 2.10.2</description>
+  <issue id="555" link="https://github.com/ppkarwasz/logging-log4j2/pull/555"/>
+  <description format="asciidoc">Updated dependency org.xmlunit:xmlunit-matchers to version 2.10.3</description>
 </entry>
