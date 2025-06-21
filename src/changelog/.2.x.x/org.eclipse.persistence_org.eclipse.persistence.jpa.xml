@@ -3,5 +3,5 @@
   xsi:schemaLocation="https://logging.apache.org/xml/ns https://logging.apache.org/xml/ns/log4j-changelog-0.xsd"
   type="updated">
   <issue id="555" link="https://github.com/ppkarwasz/logging-log4j2/pull/555"/>
-  <description format="asciidoc">Updated dependency org.xmlunit:xmlunit-core to version 2.10.3</description>
+  <description format="asciidoc">Updated dependency org.eclipse.persistence:org.eclipse.persistence.jpa to version 2.7.16</description>
 </entry>
