@@ -18,22 +18,18 @@
 name: auto-merge-dependabot
 
 on:
-  push:
-    branches:
-      - 'dependabot/**'
+  pull_request_target: { }
 
-permissions:
-  # The default GITHUB_TOKEN will be used to enable the "auto-merge" on the PR
-  pull-requests: write
+permissions: { }
 
 jobs:
 
   process-dependabot:
     # Skip this workflow on commits not pushed by Dependabot
     if: ${{ github.actor == 'dependabot[bot]' }}
-    uses: apache/logging-parent/.github/workflows/process-dependabot-reusable.yaml@feat/dependabot-add-changelog
+    uses: apache/logging-parent/.github/workflows/process-dependabot-reusable.yaml@feat/dependabot-add-changelog2
     permissions:
-      contents: write
+      pull-requests: write
     secrets:
       AUTO_MERGE_TOKEN: ${{ github.token }}
       CONTENT_WRITE_TOKEN: ${{ secrets.DEPENDABOT_TOKEN }}
@@ -42,4 +38,3 @@ jobs:
     with:
       user_name: 'Release Manager'
       user_email: bot@copernik.eu
-      reusable_ref: feat/dependabot-add-changelog
