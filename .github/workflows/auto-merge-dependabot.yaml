@@ -29,6 +29,7 @@ jobs:
     if: ${{ github.actor == 'dependabot[bot]' }}
     uses: apache/logging-parent/.github/workflows/process-dependabot-reusable.yaml@feat/dependabot-add-changelog2
     permissions:
+      contents: write
       pull-requests: write
     secrets:
       AUTO_MERGE_TOKEN: ${{ github.token }}
