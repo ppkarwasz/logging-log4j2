@@ -39,3 +39,4 @@ jobs:
     with:
       user_name: 'Release Manager'
       user_email: bot@copernik.eu
+      ref: ${{ github.head_ref }}
