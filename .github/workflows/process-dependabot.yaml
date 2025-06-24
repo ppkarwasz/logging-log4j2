@@ -31,7 +31,7 @@ jobs:
   process-dependabot:
     # Skip this workflow on commits not pushed by Dependabot
     if: ${{ github.actor == 'dependabot[bot]' }}
-    uses: apache/logging-parent/.github/workflows/analyze-dependabot-reusable.yaml@feat/dependabot-add-changelog3
+    uses: apache/logging-parent/.github/workflows/process-dependabot-reusable.yaml@feat/dependabot-add-changelog3
     permissions:
       # Required to auto-merge PRs
       contents: write
@@ -42,6 +42,6 @@ jobs:
       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
     with:
-      user_name: 'Release Manager'
-      user_email: bot@copernik.eu
+      user-name: 'Release Manager'
+      user-email: bot@copernik.eu
       analyze-workflow-run-id: ${{ github.workflow_run.id }}
