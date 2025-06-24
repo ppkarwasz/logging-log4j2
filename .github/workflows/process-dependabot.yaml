@@ -31,7 +31,7 @@ jobs:
   process-dependabot:
     # Skip this workflow on commits not pushed by Dependabot
     if: ${{ github.actor == 'dependabot[bot]' }}
-    uses: apache/logging-parent/.github/workflows/analyze-dependabot-reusable.yaml@feat/dependabot-add-changelog3
+    uses: apache/logging-parent/.github/workflows/process-dependabot-reusable.yaml@feat/dependabot-add-changelog3
     permissions:
       # Required to auto-merge PRs
       contents: write
