@@ -31,14 +31,13 @@ jobs:
   process-dependabot:
     # Skip this workflow on commits not pushed by Dependabot
     if: ${{ github.actor == 'dependabot[bot]' }}
-    uses: apache/logging-parent/.github/workflows/process-dependabot-reusable.yaml@feat/dependabot-add-changelog3
+    uses: apache/logging-parent/.github/workflows/process-dependabot-reusable.yaml@feat/dependabot-add-changelog2
     permissions:
       # Required to auto-merge PRs
       contents: write
       pull-requests: write
     secrets:
-      AUTO_MERGE_TOKEN: ${{ github.token }}
-      CONTENT_WRITE_TOKEN: ${{ secrets.USER_TOKEN }}
+      RECURSIVE_TOKEN: ${{ secrets.USER_TOKEN }}
       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
     with:
