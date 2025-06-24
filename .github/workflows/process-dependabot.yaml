@@ -15,10 +15,14 @@
 # limitations under the License.
 #
 
-name: auto-merge-dependabot
+name: Dependabot Process PR
 
 on:
-  pull_request_target: { }
+  workflow_run:
+    workflows:
+      - "Dependabot Analyze PR"
+    types:
+      - completed
 
 permissions: { }
 
@@ -27,16 +31,17 @@ jobs:
   process-dependabot:
     # Skip this workflow on commits not pushed by Dependabot
     if: ${{ github.actor == 'dependabot[bot]' }}
-    uses: apache/logging-parent/.github/workflows/process-dependabot-reusable.yaml@feat/dependabot-add-changelog2
+    uses: apache/logging-parent/.github/workflows/analyze-dependabot-reusable.yaml@feat/dependabot-add-changelog3
     permissions:
+      # Required to auto-merge PRs
       contents: write
       pull-requests: write
     secrets:
       AUTO_MERGE_TOKEN: ${{ github.token }}
-      CONTENT_WRITE_TOKEN: ${{ secrets.DEPENDABOT_TOKEN }}
+      CONTENT_WRITE_TOKEN: ${{ secrets.USER_TOKEN }}
       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
     with:
       user_name: 'Release Manager'
       user_email: bot@copernik.eu
-      ref: ${{ github.head_ref }}
+      analyze-workflow-run-id: ${{ github.workflow_run.id }}
