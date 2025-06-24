@@ -44,4 +44,4 @@ jobs:
     with:
       user-name: 'Release Manager'
       user-email: bot@copernik.eu
-      analyze-workflow-run-id: ${{ github.workflow_run.id }}
+      analyze-workflow-run-id: ${{ github.event.workflow_run.id }}
