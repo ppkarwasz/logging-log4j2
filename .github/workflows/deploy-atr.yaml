@@ -41,7 +41,7 @@ jobs:
 
       - name: Extract version
         id: version
-        run: echo "version=${GITHUB_REF_NAME#release-atr/}" >> "$GITHUB_OUTPUT"
+        run: echo "version=${GITHUB_REF_NAME#ppkarwasz-release-atr/}" >> "$GITHUB_OUTPUT"
 
       - name: Verify version
         run: |
