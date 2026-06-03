@@ -20,14 +20,14 @@ name: deploy-atr
 on:
   push:
     branches:
-      - "release-atr/*"
+      - "ppkarwasz-release-atr/*"
 
 permissions: { }
 
 jobs:
 
   deploy-atr:
-    if: github.repository == 'apache/logging-log4j2'
+    if: github.repository == 'ppkarwasz/logging-log4j2'
     runs-on: ubuntu-latest
     permissions:
       id-token: write    # Required for OIDC authentication against ATR
