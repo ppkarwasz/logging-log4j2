@@ -45,7 +45,7 @@ jobs:
         run: |
           version='${{ steps.version.outputs.version }}'
           if ! grep -qF "<revision>${version}</revision>" pom.xml; then
-            echo "::error::pom.xml mismatch between branch name and project version"
+            echo "::error::Mismatch between branch name and project version"
             exit 1
           fi
 
